@@ -35,6 +35,12 @@
         }
     }
 
+    &__logo {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+    }
+
     &__title {
         font-family: $font-family-display;
         font-size: $font-size-1xl;
