@@ -24,7 +24,12 @@ function Header() {
 
             {/* Brand */}
             <div className="header__brand">
-                <h1 className="header__title">Card Vault</h1>
+                <img
+                    className="header__logo"
+                    src="/favicon.svg"
+                    alt="The Card Vault"
+                />
+                <h1 className="header__title">The Card Vault</h1>
                 {cards && (
                     <span className="header__count">{cards.length} cards</span>
                 )}

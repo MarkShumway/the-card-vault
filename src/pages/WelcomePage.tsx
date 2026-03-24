@@ -114,7 +114,10 @@ function WelcomePage() {
             {/* ── Left — Hero ── */}
             <div className="welcome__hero">
                 <div className="welcome__logo">
-                    <h1 className="welcome__title">Card Vault</h1>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <img src="/favicon.svg" alt="The Card Vault" style={{ width: '52px', height: '52px' }} />
+                        <h1 className="welcome__title">The Card Vault</h1>
+                    </div>
                     <p className="welcome__tagline">
                         The modern way to manage your sports card collection.
                         Track value, organize by sport, and never lose sight of
