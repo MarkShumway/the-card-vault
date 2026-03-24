@@ -1,0 +1,158 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.login {
+    @include flex-center;
+    min-height: 100vh;
+    background: $gradient-bg;
+    background-attachment: fixed;
+
+    &__card {
+        @include glass-card;
+        @include flex-column;
+        width: 100%;
+        max-width: 440px;
+        padding: $space-2xl;
+        gap: $space-lg;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba($color-accent, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba($color-accent-2, 0.1), transparent 70%);
+            pointer-events: none;
+        }
+    }
+
+    &__header {
+        @include flex-column;
+        align-items: center;
+        gap: $space-sm;
+        text-align: center;
+    }
+
+    &__title {
+        font-family: $font-family-display;
+        font-size: $font-size-2xl;
+        letter-spacing: 0.06em;
+        @include gradient-text;
+    }
+
+    &__subtitle {
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+    }
+
+    &__form {
+        @include flex-column;
+        gap: $space-md;
+    }
+
+    &__field {
+        @include flex-column;
+        gap: $space-xs;
+    }
+
+    &__label {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text-secondary;
+    }
+
+    &__input {
+        padding: $space-sm $space-md;
+        background: $glass-bg;
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-md;
+        color: $color-text-primary;
+        font-size: $font-size-base;
+        transition: all $transition-fast;
+
+        &::placeholder {
+            color: $color-text-secondary;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-accent;
+            background: rgba($color-accent, 0.05);
+            box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+        }
+
+        &--error {
+            border-color: $color-error;
+        }
+    }
+
+    &__error {
+        font-size: $font-size-xs;
+        color: $color-error;
+    }
+
+    &__button {
+        padding: $space-sm $space-md;
+        background: $gradient-accent;
+        color: $color-text-primary;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+        border-radius: $border-radius-md;
+        border: none;
+        cursor: pointer;
+        transition: all $transition-fast;
+        margin-top: $space-sm;
+        box-shadow: $shadow-glow;
+
+        &:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 0 32px rgba($color-accent, 0.5);
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+
+    &__toggle {
+        text-align: center;
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+
+        button {
+            color: $color-accent;
+            font-weight: $font-weight-medium;
+            margin-left: $space-xs;
+            text-decoration: underline;
+
+            &:hover {
+                color: $color-accent-2;
+            }
+        }
+    }
+
+    &__server-error {
+        padding: $space-sm $space-md;
+        background: rgba($color-error, 0.1);
+        border: 1px solid rgba($color-error, 0.3);
+        border-radius: $border-radius-md;
+        font-size: $font-size-sm;
+        color: $color-error;
+        text-align: center;
+    }
+}

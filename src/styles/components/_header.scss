@@ -1,0 +1,172 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.header {
+    @include glass;
+    padding: $space-md $space-xl;
+    border-bottom: 1px solid $glass-border;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    // ── Desktop: single row ──────────────────────────────────────────
+    @include respond-to(md) {
+        @include flex-between;
+    }
+
+    // ── Mobile: two rows ─────────────────────────────────────────────
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: $space-sm;
+
+    &__brand {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: $space-sm;
+        grid-column: 1;
+        grid-row: 1;
+
+        @include respond-to(md) {
+            gap: $space-md;
+        }
+    }
+
+    &__title {
+        font-family: $font-family-display;
+        font-size: $font-size-1xl;
+        letter-spacing: 0.06em;
+        font-weight: $font-weight-bold;
+        @include gradient-text;
+        white-space: nowrap;
+
+        @include respond-to(md) {
+            font-size: $font-size-3xl;
+        }
+    }
+
+    &__count {
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+        background: $glass-bg;
+        border: 1px solid $glass-border;
+        padding: 2px $space-sm;
+        border-radius: $border-radius-full;
+        white-space: nowrap;
+    }
+
+    &__right {
+        @include flex-center;
+        justify-content: flex-end;
+        gap: $space-md;
+        grid-column: 2;
+        grid-row: 1;
+
+        @include respond-to(md) {
+            gap: $space-xl;
+        }
+    }
+
+    &__stats {
+        @include flex-column;
+        align-items: flex-end;
+        gap: 2px;
+
+        // Hide on very small screens — shown in second row instead
+        display: none;
+
+        @include respond-to(sm) {
+            display: flex;
+        }
+    }
+
+    &__stat-label {
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__stat-value {
+        font-size: $font-size-base;
+        font-weight: $font-weight-bold;
+        color: $color-success;
+        text-shadow: 0 0 20px rgba($color-success, 0.4);
+
+        @include respond-to(md) {
+            font-size: $font-size-lg;
+        }
+    }
+
+    &__user {
+        @include flex-center;
+        gap: $space-sm;
+
+        @include respond-to(md) {
+            gap: $space-md;
+        }
+    }
+
+    &__email {
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+        display: none;
+
+        @include respond-to(lg) {
+            display: block;
+        }
+    }
+
+    &__logout {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+        color: $color-text-secondary;
+        padding: $space-xs $space-sm;
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-md;
+        background: $glass-bg;
+        white-space: nowrap;
+        transition: all $transition-fast;
+
+        @include respond-to(md) {
+            font-size: $font-size-sm;
+            padding: $space-xs $space-md;
+        }
+
+        &:hover {
+            color: $color-text-primary;
+            border-color: $color-accent;
+            background: rgba($color-accent, 0.1);
+        }
+    }
+
+    // ── Mobile second row: show collection value ──────────────────────
+    &__mobile-stats {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        @include flex-between;
+        padding-top: $space-sm;
+        border-top: 1px solid $glass-border;
+
+        @include respond-to(sm) {
+            display: none;
+        }
+    }
+
+    &__mobile-stat-label {
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__mobile-stat-value {
+        font-size: $font-size-base;
+        font-weight: $font-weight-bold;
+        color: $color-success;
+        text-shadow: 0 0 20px rgba($color-success, 0.4);
+    }
+}

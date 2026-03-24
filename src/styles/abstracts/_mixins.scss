@@ -1,0 +1,102 @@
+@use 'variables' as *;
+
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == sm {
+        @media (min-width: $breakpoint-sm) { @content; }
+    } @else if $breakpoint == md {
+        @media (min-width: $breakpoint-md) { @content; }
+    } @else if $breakpoint == lg {
+        @media (min-width: $breakpoint-lg) { @content; }
+    } @else if $breakpoint == xl {
+        @media (min-width: $breakpoint-xl) { @content; }
+    } @else if $breakpoint == 2xl {
+        @media (min-width: $breakpoint-2xl) { @content; }
+    }
+}
+
+// Flexbox helpers
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+// Typography
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin line-clamp($lines) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+// Glassmorphism
+@mixin glass {
+    background: $glass-bg;
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1px solid $glass-border;
+}
+
+@mixin glass-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(255, 255, 255, 0.03) 100%
+    );
+    backdrop-filter: $glass-blur;
+    -webkit-backdrop-filter: $glass-blur;
+    border: 1px solid $glass-border;
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-lg, inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@mixin glass-hover {
+    &:hover {
+        background: $glass-hover;
+        border-color: rgba(255, 255, 255, 0.18);
+    }
+}
+
+// Card surface — now glass
+@mixin card-surface {
+    @include glass-card;
+}
+
+// Focus ring
+@mixin focus-ring {
+    &:focus-visible {
+        outline: 2px solid $color-accent;
+        outline-offset: 2px;
+    }
+}
+
+// Gradient text
+@mixin gradient-text {
+    background: $gradient-accent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// Glow effect
+@mixin glow($color: $color-accent) {
+    box-shadow: 0 0 20px rgba($color, 0.3), 0 0 60px rgba($color, 0.1);
+}

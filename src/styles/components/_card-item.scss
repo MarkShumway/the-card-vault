@@ -1,0 +1,183 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.card-item {
+    @include glass-card;
+    position: relative;
+    cursor: pointer;
+    transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: $gradient-card;
+        opacity: 0;
+        transition: opacity $transition-base;
+        pointer-events: none;
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: rgba($color-accent, 0.4);
+        box-shadow: $shadow-lg, $shadow-glow;
+
+        &::before {
+            opacity: 1;
+        }
+
+        .card-item__delete {
+            opacity: 1;
+        }
+    }
+
+    &__image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 2 / 3;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba($color-accent, 0.2), rgba($color-accent-2, 0.1));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform $transition-slow;
+    }
+
+    &:hover &__image img {
+        transform: scale(1.04);
+    }
+
+    &__image-placeholder {
+        @include flex-center;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba($color-accent, 0.2), rgba($color-accent-2, 0.1));
+
+        span {
+            font-size: $font-size-2xl;
+            font-weight: $font-weight-bold;
+            @include gradient-text;
+            text-transform: uppercase;
+        }
+    }
+
+    &__sport {
+        position: absolute;
+        bottom: $space-sm;
+        left: $space-sm;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        text-transform: capitalize;
+        padding: 2px $space-sm;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-full;
+        color: $color-text-primary;
+    }
+
+    &__body {
+        padding: $space-md;
+        @include flex-column;
+        gap: $space-sm;
+    }
+
+    &__header {
+        @include flex-between;
+        gap: $space-sm;
+    }
+
+    &__player {
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+        color: $color-text-primary;
+        @include truncate;
+    }
+
+    &__condition {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+        color: $color-accent-2;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    &__meta {
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+        @include truncate;
+    }
+
+    &__values {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-sm;
+        padding-top: $space-sm;
+        border-top: 1px solid $glass-border;
+    }
+
+    &__value {
+        @include flex-column;
+        gap: 2px;
+    }
+
+    &__value-label {
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__value-amount {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-text-primary;
+
+        &--current {
+            color: $color-accent-2;
+        }
+
+        &--profit {
+            color: $color-success;
+            text-shadow: 0 0 12px rgba($color-success, 0.4);
+        }
+
+        &--loss {
+            color: $color-error;
+        }
+    }
+
+    &__delete {
+        position: absolute;
+        top: $space-sm;
+        right: $space-sm;
+        width: 28px;
+        height: 28px;
+        @include flex-center;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+        border: 1px solid $glass-border;
+        color: $color-text-primary;
+        border-radius: $border-radius-full;
+        font-size: $font-size-xs;
+        opacity: 0;
+        transition: all $transition-fast;
+
+        &:hover {
+            background: $color-error;
+            border-color: $color-error;
+        }
+
+        &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    }
+}

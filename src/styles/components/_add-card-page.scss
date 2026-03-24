@@ -1,0 +1,208 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.add-card-page {
+    @include flex-column;
+    min-height: 100vh;
+
+    &__main {
+        flex: 1;
+        padding: $space-xl;
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+
+        @include respond-to(md) {
+            padding: $space-2xl;
+        }
+    }
+
+    &__heading {
+        font-family: $font-family-display;
+        font-size: $font-size-2xl;
+        letter-spacing: 0.06em;
+        @include gradient-text;
+        margin-bottom: $space-xl;
+    }
+}
+
+.card-form {
+    @include glass-card;
+    padding: $space-xl;
+    @include flex-column;
+    gap: $space-xl;
+
+    &__section {
+        @include flex-column;
+        gap: $space-md;
+    }
+
+    &__section-title {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-accent-2;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding-bottom: $space-sm;
+        border-bottom: 1px solid $glass-border;
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $space-md;
+
+        @include respond-to(md) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    &__row--three {
+        @include respond-to(md) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    &__field {
+        @include flex-column;
+        gap: $space-xs;
+    }
+
+    &__label {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text-secondary;
+
+        span {
+            color: $color-accent;
+            margin-left: 2px;
+        }
+    }
+
+    &__input,
+    &__select,
+    &__textarea {
+        padding: $space-sm $space-md;
+        background: $glass-bg;
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-md;
+        color: $color-text-primary;
+        font-size: $font-size-base;
+        transition: all $transition-fast;
+
+        &::placeholder {
+            color: $color-text-secondary;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-accent;
+            background: rgba($color-accent, 0.05);
+            box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+        }
+
+        &--error {
+            border-color: $color-error;
+        }
+
+        option {
+            background-color: #1a0a2e;
+        }
+    }
+
+    &__textarea {
+        resize: vertical;
+        min-height: 100px;
+        font-family: $font-family-base;
+    }
+
+    &__error {
+        font-size: $font-size-xs;
+        color: $color-error;
+    }
+
+    &__image-upload {
+        @include flex-column;
+        gap: $space-sm;
+    }
+
+    &__image-preview {
+        width: 100%;
+        max-width: 240px;
+        aspect-ratio: 2 / 3;
+        object-fit: contain;
+        border-radius: $border-radius-md;
+        border: 1px solid $glass-border;
+    }
+
+    &__image-placeholder {
+        @include flex-center;
+        @include flex-column;
+        gap: $space-sm;
+        width: 100%;
+        max-width: 240px;
+        aspect-ratio: 2 / 3;
+        border: 2px dashed $glass-border;
+        border-radius: $border-radius-md;
+        color: $color-text-secondary;
+        font-size: $font-size-sm;
+        cursor: pointer;
+        transition: all $transition-fast;
+
+        &:hover {
+            border-color: $color-accent;
+            color: $color-accent;
+            background: rgba($color-accent, 0.05);
+        }
+    }
+
+    &__image-input {
+        display: none;
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-md;
+        justify-content: flex-end;
+        padding-top: $space-md;
+        border-top: 1px solid $glass-border;
+    }
+
+    &__cancel {
+        padding: $space-sm $space-xl;
+        background: $glass-bg;
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-md;
+        color: $color-text-secondary;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        transition: all $transition-fast;
+
+        &:hover {
+            border-color: $color-text-secondary;
+            color: $color-text-primary;
+        }
+    }
+
+    &__submit {
+        padding: $space-sm $space-xl;
+        background: $gradient-accent;
+        border: none;
+        border-radius: $border-radius-md;
+        color: $color-text-primary;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+        transition: all $transition-fast;
+        box-shadow: $shadow-glow;
+
+        &:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 0 32px rgba($color-accent, 0.5);
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+}

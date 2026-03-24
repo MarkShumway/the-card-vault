@@ -1,0 +1,279 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.card-detail-page {
+    @include flex-column;
+    min-height: 100vh;
+
+    &__main {
+        flex: 1;
+        padding: $space-xl;
+        max-width: 900px;
+        width: 100%;
+        margin: 0 auto;
+
+        @include respond-to(md) {
+            padding: $space-2xl;
+        }
+    }
+
+    &__back {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-sm;
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+        margin-bottom: $space-xl;
+        transition: all $transition-fast;
+        background: $glass-bg;
+        border: 1px solid $glass-border;
+        padding: $space-xs $space-md;
+        border-radius: $border-radius-full;
+
+        &:hover {
+            color: $color-text-primary;
+            border-color: $color-accent;
+            background: rgba($color-accent, 0.1);
+        }
+    }
+
+    &__layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $space-xl;
+
+        @include respond-to(md) {
+            grid-template-columns: 320px 1fr;
+        }
+    }
+
+    &__image-col {
+        @include flex-column;
+        gap: $space-md;
+    }
+
+    &__image {
+        width: 100%;
+        aspect-ratio: 2 / 3;
+        object-fit: contain;
+        border-radius: $border-radius-lg;
+        border: 1px solid $glass-border;
+        box-shadow: $shadow-lg, $shadow-glow-cyan;
+        background: linear-gradient(135deg, rgba($color-accent, 0.15), rgba($color-accent-2, 0.08));
+    }
+
+    &__image-placeholder {
+        @include flex-center;
+        width: 100%;
+        aspect-ratio: 2 / 3;
+        background: linear-gradient(135deg, rgba($color-accent, 0.2), rgba($color-accent-2, 0.1));
+        border-radius: $border-radius-lg;
+        border: 1px solid $glass-border;
+
+        span {
+            font-size: 5rem;
+            font-weight: $font-weight-bold;
+            @include gradient-text;
+            text-transform: uppercase;
+        }
+    }
+
+    &__info-col {
+        @include flex-column;
+        gap: $space-xl;
+    }
+
+    &__title-row {
+        @include flex-between;
+        gap: $space-md;
+        flex-wrap: wrap;
+    }
+
+    &__player-name {
+        font-family: $font-family-display;
+        font-size: $font-size-2xl;
+        letter-spacing: 0.04em;
+        @include gradient-text;
+    }
+
+    &__badges {
+        display: flex;
+        gap: $space-sm;
+        flex-wrap: wrap;
+    }
+
+    &__badge {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        padding: $space-xs $space-md;
+        border-radius: $border-radius-full;
+        text-transform: capitalize;
+        border: 1px solid $glass-border;
+
+        &--sport {
+            background: $glass-bg;
+            color: $color-text-secondary;
+        }
+
+        &--condition {
+            background: rgba($color-accent, 0.15);
+            border-color: rgba($color-accent, 0.3);
+            color: $color-accent;
+        }
+    }
+
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-md;
+    }
+
+    &__stat {
+        @include glass-card;
+        padding: $space-md;
+        @include flex-column;
+        gap: $space-xs;
+        text-align: center;
+    }
+
+    &__stat-label {
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__stat-value {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $color-text-primary;
+
+        &--profit {
+            color: $color-success;
+            text-shadow: 0 0 16px rgba($color-success, 0.4);
+        }
+
+        &--loss {
+            color: $color-error;
+        }
+    }
+
+    &__details {
+        @include glass-card;
+        padding: $space-lg;
+        @include flex-column;
+        gap: $space-md;
+    }
+
+    &__details-title {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-accent-2;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding-bottom: $space-sm;
+        border-bottom: 1px solid $glass-border;
+    }
+
+    &__details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $space-md;
+    }
+
+    &__detail-item {
+        @include flex-column;
+        gap: 2px;
+    }
+
+    &__detail-label {
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    &__detail-value {
+        font-size: $font-size-base;
+        color: $color-text-primary;
+        font-weight: $font-weight-medium;
+    }
+
+    &__notes {
+        @include glass-card;
+        padding: $space-lg;
+        @include flex-column;
+        gap: $space-sm;
+    }
+
+    &__notes-title {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-accent-2;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    &__notes-text {
+        font-size: $font-size-base;
+        color: $color-text-secondary;
+        line-height: 1.7;
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-md;
+        flex-wrap: wrap;
+    }
+
+    &__edit-btn {
+        padding: $space-sm $space-xl;
+        background: $gradient-accent;
+        border: none;
+        border-radius: $border-radius-md;
+        color: $color-text-primary;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+        transition: all $transition-fast;
+        box-shadow: $shadow-glow;
+
+        &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 32px rgba($color-accent, 0.5);
+        }
+    }
+
+    &__delete-btn {
+        padding: $space-sm $space-xl;
+        background: $glass-bg;
+        border: 1px solid rgba($color-error, 0.4);
+        border-radius: $border-radius-md;
+        color: $color-error;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        transition: all $transition-fast;
+
+        &:hover:not(:disabled) {
+            background: $color-error;
+            color: $color-text-primary;
+            box-shadow: 0 0 20px rgba($color-error, 0.3);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    &__loading,
+    &__error {
+        @include flex-center;
+        min-height: 400px;
+        color: $color-text-secondary;
+        font-size: $font-size-lg;
+    }
+
+    &__error {
+        color: $color-error;
+    }
+}
