@@ -3,8 +3,7 @@ import collectionReducer from '../features/collection/collectionSlice'
 import authReducer from '../features/auth/authSlice'
 import { cardsApi } from '../features/cards/cardsApi'
 
-/* Assemble and configure the Redux store */
-
+// ─── Assemble and configure the Redux store ──────────────────────────────
 export const store = configureStore({
     reducer: {
         collection: collectionReducer,

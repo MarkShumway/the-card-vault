@@ -7,8 +7,7 @@ export type Json =
     | Json[]
 
 export type Database = {
-    // Allows to automatically instantiate createClient with right options
-    // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+    // ─── Instantiate createClient ─────────────────────────────────────────────────────
     __InternalSupabase: {
         PostgrestVersion: "14.4"
     }
@@ -90,7 +89,7 @@ type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
 
 export type Tables<
     DefaultSchemaTableNameOrOptions extends
-            | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+        | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
         | { schema: keyof DatabaseWithoutInternals },
     TableName extends DefaultSchemaTableNameOrOptions extends {
             schema: keyof DatabaseWithoutInternals
@@ -119,7 +118,7 @@ export type Tables<
 
 export type TablesInsert<
     DefaultSchemaTableNameOrOptions extends
-            | keyof DefaultSchema["Tables"]
+        | keyof DefaultSchema["Tables"]
         | { schema: keyof DatabaseWithoutInternals },
     TableName extends DefaultSchemaTableNameOrOptions extends {
             schema: keyof DatabaseWithoutInternals
@@ -144,7 +143,7 @@ export type TablesInsert<
 
 export type TablesUpdate<
     DefaultSchemaTableNameOrOptions extends
-            | keyof DefaultSchema["Tables"]
+        | keyof DefaultSchema["Tables"]
         | { schema: keyof DatabaseWithoutInternals },
     TableName extends DefaultSchemaTableNameOrOptions extends {
             schema: keyof DatabaseWithoutInternals
@@ -169,7 +168,7 @@ export type TablesUpdate<
 
 export type Enums<
     DefaultSchemaEnumNameOrOptions extends
-            | keyof DefaultSchema["Enums"]
+        | keyof DefaultSchema["Enums"]
         | { schema: keyof DatabaseWithoutInternals },
     EnumName extends DefaultSchemaEnumNameOrOptions extends {
             schema: keyof DatabaseWithoutInternals
@@ -186,7 +185,7 @@ export type Enums<
 
 export type CompositeTypes<
     PublicCompositeTypeNameOrOptions extends
-            | keyof DefaultSchema["CompositeTypes"]
+        | keyof DefaultSchema["CompositeTypes"]
         | { schema: keyof DatabaseWithoutInternals },
     CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
             schema: keyof DatabaseWithoutInternals
