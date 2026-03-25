@@ -15,7 +15,6 @@ import type { Sport, CardCondition } from '../types'
 import {formatCurrency, formatPercent, calcProfit, formatDate} from '../utils/formatters'
 
 // ─── Zod schema ───────────────────────────────────────────────────────────────
-
 const editSchema = z.object({
     player_name: z.string().min(1, 'Player name is required'),
     year: z
@@ -44,7 +43,6 @@ const editSchema = z.object({
 type EditFormValues = z.infer<typeof editSchema>
 
 // ─── Component ────────────────────────────────────────────────────────────────
-
 function CardDetailPage() {
     const { id } = useParams<{ id: string }>()
     const navigate = useNavigate()
@@ -170,7 +168,6 @@ function CardDetailPage() {
     const displayImage = imagePreview ?? card.image_url
 
     // ─── View mode ───────────────────────────────────────────────────────────────
-
     if (!isEditing) {
         return (
             <div className="card-detail-page">
@@ -314,7 +311,6 @@ function CardDetailPage() {
     }
 
     // ─── Edit mode ───────────────────────────────────────────────────────────────
-
     return (
         <div className="card-detail-page">
             <Header />

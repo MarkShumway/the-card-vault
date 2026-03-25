@@ -2,11 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { AuthUser } from '../../types'
 
-/*------------------------------------------------------------------------------------------------------------
- This manages the authentication state of the current user — whether someone is logged in, who they are,
- and whether auth is still loading.
-*------------------------------------------------------------------------------------------------------------*/
-
+// ─── Manage the authentication state of the current user ──────────────────────────────
 interface AuthState {
     user: AuthUser | null
     isLoading: boolean

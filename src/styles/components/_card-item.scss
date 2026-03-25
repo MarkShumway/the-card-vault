@@ -20,7 +20,7 @@
 
     &:hover {
         transform: translateY(-4px);
-        border-color: rgba($color-accent, 0.4);
+        border-color: rgba($color-accent-2, 0.4);
         box-shadow: $shadow-lg, $shadow-glow;
 
         &::before {
@@ -37,7 +37,7 @@
         width: 100%;
         aspect-ratio: 2 / 3;
         overflow: hidden;
-        background: linear-gradient(135deg, rgba($color-accent, 0.2), rgba($color-accent-2, 0.1));
+        background: linear-gradient(135deg, rgba($color-accent-3, 0.2), rgba($color-accent-4, 0.1));
         display: flex;
         align-items: center;
         justify-content: center;

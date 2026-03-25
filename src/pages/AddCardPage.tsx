@@ -9,7 +9,6 @@ import Header from '../components/layout/Header'
 import type { Sport, CardCondition } from '../types'
 
 // ─── Zod schema ───────────────────────────────────────────────────────────────
-
 const cardSchema = z.object({
     player_name: z.string().min(1, 'Player name is required'),
     year: z
@@ -38,7 +37,6 @@ const cardSchema = z.object({
 type CardFormValues = z.infer<typeof cardSchema>
 
 // ─── Component ────────────────────────────────────────────────────────────────
-
 function AddCardPage() {
     const navigate = useNavigate()
     const { user } = useAppSelector((state) => state.auth)

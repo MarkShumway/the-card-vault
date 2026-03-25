@@ -7,7 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { supabase } from '../services/supabase'
 
 // ─── Zod schemas ──────────────────────────────────────────────────────────────
-
 const loginSchema = z.object({
     email: z.string().email('Please enter a valid email address'),
     password: z.string().min(6, 'Password must be at least 6 characters'),
@@ -30,7 +29,6 @@ type LoginFormValues = z.infer<typeof loginSchema>
 type SignUpFormValues = z.infer<typeof signUpSchema>
 
 // ─── Features list ────────────────────────────────────────────────────────────
-
 const FEATURES = [
     {
         icon: '🃏',
@@ -55,7 +53,6 @@ const FEATURES = [
 ]
 
 // ─── Component ────────────────────────────────────────────────────────────────
-
 function WelcomePage() {
     const { user, isInitialized } = useAppSelector((state) => state.auth)
     const [isSignUp, setIsSignUp] = useState(false)

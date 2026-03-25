@@ -5,6 +5,7 @@ import WelcomePage from '../pages/WelcomePage'
 import CollectionPage from '../pages/CollectionPage'
 import AddCardPage from '../pages/AddCardPage'
 import CardDetailPage from '../pages/CardDetailPage'
+import * as React from "react";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
     const { user, isInitialized } = useAppSelector((state) => state.auth)

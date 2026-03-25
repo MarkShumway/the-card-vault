@@ -53,20 +53,20 @@ function CardItem({ card }: CardItemProps) {
                     <div className="card-item__value">
                         <span className="card-item__value-label">Paid</span>
                         <span className="card-item__value-amount">
-              {formatCurrency(card.purchase_price)}
-            </span>
+                            {formatCurrency(card.purchase_price)}
+                        </span>
                     </div>
                     <div className="card-item__value">
                         <span className="card-item__value-label">Value</span>
                         <span className="card-item__value-amount card-item__value-amount--current">
-              {formatCurrency(card.current_value)}
-            </span>
+                            {formatCurrency(card.current_value)}
+                        </span>
                     </div>
                     <div className="card-item__value">
                         <span className="card-item__value-label">P&L</span>
                         <span className={`card-item__value-amount card-item__value-amount--${isProfit ? 'profit' : 'loss'}`}>
-              {formatCurrency(profit)} ({formatPercent(percent)})
-            </span>
+                            {formatCurrency(profit)} ({formatPercent(percent)})
+                        </span>
                     </div>
                 </div>
             </div>

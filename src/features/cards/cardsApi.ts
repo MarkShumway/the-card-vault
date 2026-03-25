@@ -2,12 +2,7 @@ import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import { supabase } from '../../services/supabase'
 import type { CardRow, CardInsert, CardUpdate } from '../../types'
 
-/*------------------------------------------------------------------------------------------------------------
- RTK Query is a data fetching and caching layer built into Redux Toolkit. Instead of writing useEffect + fetch
- + loading/error state manually in every component, define your API endpoints once here and RTK Query handles
- everything else.
-*------------------------------------------------------------------------------------------------------------*/
-
+// ─── Define API endpoints ──────────────────────────────
 export const cardsApi = createApi({
     reducerPath: 'cardsApi',
     baseQuery: fakeBaseQuery(),
