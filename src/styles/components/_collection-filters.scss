@@ -31,8 +31,7 @@
 
         &:focus {
             outline: none;
-            //border-color: $color-accent;
-            border-color: #286774;
+            border-color: $border-color-highlight;
             background: rgba($color-accent, 0.05);
             box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
         }
@@ -62,7 +61,7 @@
 
         &:focus {
             outline: none;
-            border-color: $color-accent;
+            border-color: $border-color-highlight;
         }
 
         option {
@@ -82,15 +81,15 @@
         transition: all $transition-fast;
 
         &:hover {
-            border-color: $color-accent;
-            color: $color-accent;
-            background: rgba($color-accent, 0.1);
+            border-color: $border-color-highlight;
+            color: #fff;
+            background: rgba($border-color-highlight, 0.1);
         }
 
         &--asc {
-            border-color: $color-accent;
-            color: $color-accent;
-            background: rgba($color-accent, 0.1);
+            border-color: $border-color-highlight;
+            color: $border-color-highlight;
+            background: rgba($border-color-highlight, 0.1);
         }
     }
 

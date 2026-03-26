@@ -1,0 +1,112 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.session-modal {
+    &__overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 1000;
+        @include flex-center;
+        padding: $space-lg;
+    }
+
+    @include glass-card;
+    @include flex-column;
+    align-items: center;
+    text-align: center;
+    gap: $space-lg;
+    width: 100%;
+    max-width: 420px;
+    padding: $space-2xl;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba($color-warning, 0.15), transparent 70%);
+        pointer-events: none;
+    }
+
+    &__icon {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+
+    &__title {
+        font-family: $font-family-display;
+        font-size: $font-size-2xl;
+        letter-spacing: 0.04em;
+        color: $color-warning;
+    }
+
+    &__message {
+        font-size: $font-size-base;
+        color: $color-text-secondary;
+        margin-bottom: -$space-sm;
+    }
+
+    &__countdown {
+        font-family: $font-family-base;
+        font-size: 3rem;
+        font-weight: $font-weight-bold;
+        color: $color-warning;
+        text-shadow: 0 0 24px rgba($color-warning, 0.5);
+        letter-spacing: 0.1em;
+    }
+
+    &__sub {
+        font-size: $font-size-sm;
+        color: $color-text-muted;
+        line-height: 1.6;
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-md;
+        width: 100%;
+    }
+
+    &__signout {
+        flex: 1;
+        padding: $space-sm $space-md;
+        background: $glass-bg;
+        border: 1px solid rgba($color-error, 0.4);
+        border-radius: $border-radius-md;
+        color: $color-error;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        transition: all $transition-fast;
+
+        &:hover {
+            background: $color-error;
+            color: $color-text-primary;
+        }
+    }
+
+    &__stay {
+        flex: 1;
+        padding: $space-sm $space-md;
+        background: $gradient-accent;
+        border: none;
+        border-radius: $border-radius-md;
+        color: $color-text-primary;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+        transition: all $transition-fast;
+        box-shadow: $shadow-glow;
+
+        &:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 32px rgba($color-accent, 0.5);
+        }
+    }
+}

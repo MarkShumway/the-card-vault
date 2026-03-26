@@ -7,12 +7,14 @@ interface AuthState {
     user: AuthUser | null
     isLoading: boolean
     isInitialized: boolean
+    showSessionWarning: boolean
 }
 
 const initialState: AuthState = {
     user: null,
     isLoading: false,
     isInitialized: false,
+    showSessionWarning: false,
 }
 
 const authSlice = createSlice({
@@ -26,8 +28,11 @@ const authSlice = createSlice({
         setAuthLoading(state, action: PayloadAction<boolean>) {
             state.isLoading = action.payload
         },
+        setShowWarning(state, action: PayloadAction<boolean>) {
+            state.showSessionWarning = action.payload
+        },
     },
 })
 
-export const { setUser, setAuthLoading } = authSlice.actions
+export const { setUser, setAuthLoading, setShowWarning } = authSlice.actions
 export default authSlice.reducer

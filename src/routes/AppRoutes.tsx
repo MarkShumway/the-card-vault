@@ -5,6 +5,7 @@ import WelcomePage from '../pages/WelcomePage'
 import CollectionPage from '../pages/CollectionPage'
 import AddCardPage from '../pages/AddCardPage'
 import CardDetailPage from '../pages/CardDetailPage'
+import SessionWarningModal from '../components/common/SessionWarningModal'
 import * as React from "react";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -19,12 +20,10 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 function AppRoutes() {
     return (
         <BrowserRouter>
+            <SessionWarningModal />
             <Routes>
-                {/* Public */}
                 <Route path="/" element={<WelcomePage />} />
                 <Route path="/login" element={<LoginPage />} />
-
-                {/* Protected */}
                 <Route
                     path="/collection"
                     element={
@@ -49,8 +48,6 @@ function AppRoutes() {
                         </ProtectedRoute>
                     }
                 />
-
-                {/* Fallback */}
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </BrowserRouter>

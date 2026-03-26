@@ -144,8 +144,8 @@
 
         &:hover {
             color: $color-text-primary;
-            border-color: $color-accent;
-            background: rgba($color-accent, 0.1);
+            border-color: $border-color-highlight;
+            background: rgba($border-color-highlight, 0.1);
         }
     }
 

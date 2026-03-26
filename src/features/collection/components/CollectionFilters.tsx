@@ -67,6 +67,7 @@ function CollectionFilters() {
             <div className="collection-filters__controls">
                 <select
                     className="collection-filters__select"
+                    name="filter-category"
                     value={filters.category}
                     onChange={(e) => dispatch(setCategoryFilter(e.target.value as CardCategory | 'all'))}
                 >
@@ -78,6 +79,7 @@ function CollectionFilters() {
                 <select
                     className="collection-filters__select"
                     value={filters.condition}
+                    name="filter-condition"
                     onChange={(e) => dispatch(setConditionFilter(e.target.value as CardCondition | 'all'))}
                 >
                     {CONDITIONS.map((c) => (
@@ -88,6 +90,7 @@ function CollectionFilters() {
                 <select
                     className="collection-filters__select"
                     value={filters.sortField}
+                    name="filter-sort"
                     onChange={(e) => dispatch(setSortField(e.target.value as SortField))}
                 >
                     {SORT_FIELDS.map((s) => (
