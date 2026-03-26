@@ -91,6 +91,7 @@ function Pagination({ totalItems }: PaginationProps) {
                 <span className="pagination__size-label">Per page</span>
                 <select
                     className="pagination__size-select"
+                    name="size-select"
                     value={pageSize}
                     onChange={(e) => dispatch(setPageSize(Number(e.target.value)))}
                 >

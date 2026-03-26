@@ -7,10 +7,10 @@
 
     &__main {
         flex: 1;
-        padding: $space-xl;
+        padding: $space-xl $space-xl 100px $space-xl;
 
         @include respond-to(md) {
-            padding: $space-2xl;
+            padding: $space-2xl $space-2xl 100px $space-2xl;
         }
     }
 
@@ -63,20 +63,21 @@
 
     &__fab {
         position: fixed;
-        bottom: $space-2xl;
+        bottom: $space-3xl;
         right: $space-2xl;
         width: 56px;
         height: 56px;
         @include flex-center;
         background: $gradient-accent;
         color: $color-text-primary;
-        font-size: $font-size-1xl;
+        font-size: $font-size-2xl;
         border-radius: $border-radius-full;
         box-shadow: $shadow-lg, $shadow-glow;
         transition: all $transition-fast;
         z-index: 50;
 
         &:hover {
+            //background-color: $color-accent-hover;
             transform: scale(1.08) translateY(-2px);
             box-shadow: $shadow-lg, 0 0 32px rgba($color-accent, 0.5);
         }
