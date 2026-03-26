@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useAddCardMutation, useUploadCardImageMutation } from '../features/cards/cardsApi'
 import { useAppSelector } from '../store/hooks'
 import Header from '../components/layout/Header'
-import type { Sport, CardCondition } from '../types'
+import type { CardCategory, CardCondition } from '../types'
 
 // ─── Zod schema ───────────────────────────────────────────────────────────────
 const cardSchema = z.object({
@@ -19,7 +19,11 @@ const cardSchema = z.object({
     brand: z.string().min(1, 'Brand is required'),
     series: z.string().optional(),
     card_number: z.string().optional(),
-    sport: z.enum(['baseball', 'hockey', 'football', 'basketball']),
+    category: z.enum([
+        'baseball', 'hockey', 'football', 'basketball',
+        'soccer', 'golf', 'tennis', 'wrestling',
+        'pokemon', 'magic', 'yugioh', 'other'
+    ]),
     condition: z.enum([
         'PSA 10', 'PSA 9', 'PSA 8', 'PSA 7',
         'BGS 9.5', 'BGS 9',
@@ -54,7 +58,7 @@ function AddCardPage() {
     } = useForm<CardFormValues>({
         resolver: zodResolver(cardSchema),
         defaultValues: {
-            sport: 'baseball',
+            category: 'baseball',
             condition: 'Raw - Near Mint',
             purchase_price: 0,
             current_value: 0,
@@ -91,7 +95,7 @@ function AddCardPage() {
                 brand: values.brand,
                 series: values.series ?? null,
                 card_number: values.card_number ?? null,
-                sport: values.sport as Sport,
+                category: values.category as CardCategory,
                 condition: values.condition as CardCondition,
                 purchase_price: values.purchase_price,
                 current_value: values.current_value,
@@ -129,31 +133,16 @@ function AddCardPage() {
                         <div className="card-form__row">
                             <div className="card-form__field">
                                 <label className="card-form__label">
-                                    Player Name <span>*</span>
+                                    Name <span>*</span>
                                 </label>
                                 <input
                                     className={`card-form__input${errors.player_name ? ' card-form__input--error' : ''}`}
-                                    placeholder="e.g. Mike Trout"
+                                    placeholder="e.g. Mike Trout, Charizard, Black Lotus"
                                     {...register('player_name')}
                                 />
                                 {errors.player_name && (
                                     <span className="card-form__error">{errors.player_name.message}</span>
                                 )}
-                            </div>
-
-                            <div className="card-form__field">
-                                <label className="card-form__label">
-                                    Sport <span>*</span>
-                                </label>
-                                <select
-                                    className="card-form__select"
-                                    {...register('sport')}
-                                >
-                                    <option value="baseball">Baseball</option>
-                                    <option value="hockey">Hockey</option>
-                                    <option value="football">Football</option>
-                                    <option value="basketball">Basketball</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -180,16 +169,31 @@ function AddCardPage() {
 
                             <div className="card-form__field">
                                 <label className="card-form__label">
-                                    Brand <span>*</span>
+                                    Category <span>*</span>
                                 </label>
-                                <input
-                                    className={`card-form__input${errors.brand ? ' card-form__input--error' : ''}`}
-                                    placeholder="e.g. Topps"
-                                    {...register('brand')}
-                                />
-                                {errors.brand && (
-                                    <span className="card-form__error">{errors.brand.message}</span>
-                                )}
+                                <select
+                                    className="card-form__select"
+                                    {...register('category')}
+                                >
+                                    <optgroup label="Sports">
+                                        <option value="baseball">Baseball</option>
+                                        <option value="basketball">Basketball</option>
+                                        <option value="football">Football</option>
+                                        <option value="golf">Golf</option>
+                                        <option value="hockey">Hockey</option>
+                                        <option value="soccer">Soccer</option>
+                                        <option value="tennis">Tennis</option>
+                                        <option value="wrestling">Wrestling</option>
+                                    </optgroup>
+                                    <optgroup label="Trading Cards">
+                                        <option value="pokemon">Pokémon</option>
+                                        <option value="magic">Magic: The Gathering</option>
+                                        <option value="yugioh">Yu-Gi-Oh!</option>
+                                    </optgroup>
+                                    <optgroup label="Other">
+                                        <option value="other">Other</option>
+                                    </optgroup>
+                                </select>
                             </div>
 
                             <div className="card-form__field">
@@ -329,11 +333,11 @@ function AddCardPage() {
                         <h3 className="card-form__section-title">Notes</h3>
 
                         <div className="card-form__field">
-              <textarea
-                  className="card-form__textarea"
-                  placeholder="Any additional notes about this card..."
-                  {...register('notes')}
-              />
+                            <textarea
+                                className="card-form__textarea"
+                                placeholder="Any additional notes about this card..."
+                                {...register('notes')}
+                            />
                         </div>
                     </div>
 

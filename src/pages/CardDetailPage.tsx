@@ -11,8 +11,9 @@ import {
 } from '../features/cards/cardsApi'
 import { useAppSelector } from '../store/hooks'
 import Header from '../components/layout/Header'
-import type { Sport, CardCondition } from '../types'
+import type { CardCategory, CardCondition } from '../types'
 import {formatCurrency, formatPercent, calcProfit, formatDate} from '../utils/formatters'
+import * as React from "react";
 
 // ─── Zod schema ───────────────────────────────────────────────────────────────
 const editSchema = z.object({
@@ -25,7 +26,11 @@ const editSchema = z.object({
     brand: z.string().min(1, 'Brand is required'),
     series: z.string().optional(),
     card_number: z.string().optional(),
-    sport: z.enum(['baseball', 'hockey', 'football', 'basketball']),
+    category: z.enum([
+        'baseball', 'hockey', 'football', 'basketball',
+        'soccer', 'golf', 'tennis', 'wrestling',
+        'pokemon', 'magic', 'yugioh', 'other'
+    ]),
     condition: z.enum([
         'PSA 10', 'PSA 9', 'PSA 8', 'PSA 7',
         'BGS 9.5', 'BGS 9',
@@ -96,7 +101,7 @@ function CardDetailPage() {
             brand: card.brand,
             series: card.series ?? '',
             card_number: card.card_number ?? '',
-            sport: card.sport as Sport,
+            category: card.category as CardCategory,
             condition: card.condition as CardCondition,
             purchase_price: card.purchase_price,
             current_value: card.current_value,
@@ -147,7 +152,7 @@ function CardDetailPage() {
                     brand: values.brand,
                     series: values.series ?? null,
                     card_number: values.card_number ?? null,
-                    sport: values.sport as Sport,
+                    category: values.category as CardCategory,
                     condition: values.condition as CardCondition,
                     purchase_price: values.purchase_price,
                     current_value: values.current_value,
@@ -182,7 +187,6 @@ function CardDetailPage() {
                     </button>
 
                     <div className="card-detail-page__layout">
-
                         {/* Image column */}
                         <div className="card-detail-page__image-col">
                             {card.image_url ? (
@@ -200,14 +204,13 @@ function CardDetailPage() {
 
                         {/* Info column */}
                         <div className="card-detail-page__info-col">
-
                             <div className="card-detail-page__title-row">
                                 <h2 className="card-detail-page__player-name">
                                     {card.player_name}
                                 </h2>
                                 <div className="card-detail-page__badges">
-                                    <span className="card-detail-page__badge card-detail-page__badge--sport">
-                                        {card.sport}
+                                    <span className="card-detail-page__badge card-detail-page__badge--category">
+                                        {card.category}
                                     </span>
                                     <span className="card-detail-page__badge card-detail-page__badge--condition">
                                         {card.condition}
@@ -315,7 +318,6 @@ function CardDetailPage() {
         <div className="card-detail-page">
             <Header />
             <main className="card-detail-page__main">
-
                 <button
                     className="card-detail-page__back"
                     onClick={handleEditCancel}
@@ -332,13 +334,12 @@ function CardDetailPage() {
                 )}
 
                 <form className="card-form" onSubmit={handleSubmit(onSubmit)}>
-
                     {/* ── Player Info ── */}
                     <div className="card-form__section">
                         <h3 className="card-form__section-title">Player Info</h3>
                         <div className="card-form__row">
                             <div className="card-form__field">
-                                <label className="card-form__label">Player Name <span>*</span></label>
+                                <label className="card-form__label">Name <span>*</span></label>
                                 <input
                                     className={`card-form__input${errors.player_name ? ' card-form__input--error' : ''}`}
                                     {...register('player_name')}
@@ -348,12 +349,31 @@ function CardDetailPage() {
                                 )}
                             </div>
                             <div className="card-form__field">
-                                <label className="card-form__label">Sport <span>*</span></label>
-                                <select className="card-form__select" {...register('sport')}>
-                                    <option value="baseball">Baseball</option>
-                                    <option value="hockey">Hockey</option>
-                                    <option value="football">Football</option>
-                                    <option value="basketball">Basketball</option>
+                                <label className="card-form__label">
+                                    Category <span>*</span>
+                                </label>
+                                <select
+                                    className="card-form__select"
+                                    {...register('category')}
+                                >
+                                    <optgroup label="Sports">
+                                        <option value="baseball">Baseball</option>
+                                        <option value="basketball">Basketball</option>
+                                        <option value="football">Football</option>
+                                        <option value="golf">Golf</option>
+                                        <option value="hockey">Hockey</option>
+                                        <option value="soccer">Soccer</option>
+                                        <option value="tennis">Tennis</option>
+                                        <option value="wrestling">Wrestling</option>
+                                    </optgroup>
+                                    <optgroup label="Trading Cards">
+                                        <option value="pokemon">Pokémon</option>
+                                        <option value="magic">Magic: The Gathering</option>
+                                        <option value="yugioh">Yu-Gi-Oh!</option>
+                                    </optgroup>
+                                    <optgroup label="Other">
+                                        <option value="other">Other</option>
+                                    </optgroup>
                                 </select>
                             </div>
                         </div>
@@ -370,7 +390,7 @@ function CardDetailPage() {
                                     type="number"
                                     {...register('year', { valueAsNumber: true })}
                                 />
-                                    {errors.year && (
+                                {errors.year && (
                                     <span className="card-form__error">{errors.year.message}</span>
                                 )}
                             </div>
@@ -513,7 +533,6 @@ function CardDetailPage() {
                             {isSubmitting ? 'Saving...' : 'Save Changes'}
                         </button>
                     </div>
-
                 </form>
             </main>
         </div>

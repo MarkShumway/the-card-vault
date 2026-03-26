@@ -34,7 +34,7 @@ function CardItem({ card }: CardItemProps) {
                         <span>{card.player_name.charAt(0)}</span>
                     </div>
                 )}
-                <span className="card-item__sport">{card.sport}</span>
+                <span className="card-item__category">{card.category}</span>
             </div>
 
             <div className="card-item__body">

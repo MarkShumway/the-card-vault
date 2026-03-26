@@ -1,20 +1,28 @@
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import {
     setSearch,
-    setSportFilter,
+    setCategoryFilter,
     setConditionFilter,
     setSortField,
     setSortDirection,
     resetFilters,
 } from '../collectionSlice'
-import type { Sport, CardCondition, SortField } from '../../../types'
+import type { CardCategory, CardCondition, SortField } from '../../../types'
 
-const SPORTS: Array<{ value: Sport | 'all'; label: string }> = [
-    { value: 'all', label: 'All Sports' },
+const CATEGORIES: Array<{ value: CardCategory | 'all'; label: string }> = [
+    { value: 'all', label: 'All Categories' },
     { value: 'baseball', label: 'Baseball' },
-    { value: 'hockey', label: 'Hockey' },
-    { value: 'football', label: 'Football' },
     { value: 'basketball', label: 'Basketball' },
+    { value: 'football', label: 'Football' },
+    { value: 'golf', label: 'Golf' },
+    { value: 'hockey', label: 'Hockey' },
+    { value: 'magic', label: 'Magic: The Gathering' },
+    { value: 'pokemon', label: 'Pokémon' },
+    { value: 'soccer', label: 'Soccer' },
+    { value: 'tennis', label: 'Tennis' },
+    { value: 'wrestling', label: 'Wrestling' },
+    { value: 'yugioh', label: 'Yu-Gi-Oh!' },
+    { value: 'other', label: 'Other' },
 ]
 
 const CONDITIONS: Array<{ value: CardCondition | 'all'; label: string }> = [
@@ -33,7 +41,7 @@ const CONDITIONS: Array<{ value: CardCondition | 'all'; label: string }> = [
 
 const SORT_FIELDS: Array<{ value: SortField; label: string }> = [
     { value: 'created_at', label: 'Date Added' },
-    { value: 'player_name', label: 'Player Name' },
+    { value: 'player_name', label: 'Name' },
     { value: 'year', label: 'Year' },
     { value: 'current_value', label: 'Current Value' },
     { value: 'purchase_price', label: 'Purchase Price' },
@@ -49,8 +57,8 @@ function CollectionFilters() {
                 <input
                     className="collection-filters__input"
                     type="text"
-                    name="filter-by"
-                    placeholder="Search by player, brand, or series..."
+                    name="search-input"
+                    placeholder="Search by name, brand, or series..."
                     value={filters.search}
                     onChange={(e) => dispatch(setSearch(e.target.value))}
                 />
@@ -59,19 +67,17 @@ function CollectionFilters() {
             <div className="collection-filters__controls">
                 <select
                     className="collection-filters__select"
-                    value={filters.sport}
-                    name="filter-select-sport"
-                    onChange={(e) => dispatch(setSportFilter(e.target.value as Sport | 'all'))}
+                    value={filters.category}
+                    onChange={(e) => dispatch(setCategoryFilter(e.target.value as CardCategory | 'all'))}
                 >
-                    {SPORTS.map((s) => (
-                        <option key={s.value} value={s.value}>{s.label}</option>
+                    {CATEGORIES.map((c) => (
+                        <option key={c.value} value={c.value}>{c.label}</option>
                     ))}
                 </select>
 
                 <select
                     className="collection-filters__select"
                     value={filters.condition}
-                    name="filter-select-condition"
                     onChange={(e) => dispatch(setConditionFilter(e.target.value as CardCondition | 'all'))}
                 >
                     {CONDITIONS.map((c) => (
@@ -82,7 +88,6 @@ function CollectionFilters() {
                 <select
                     className="collection-filters__select"
                     value={filters.sortField}
-                    name="filter-select-sort"
                     onChange={(e) => dispatch(setSortField(e.target.value as SortField))}
                 >
                     {SORT_FIELDS.map((s) => (

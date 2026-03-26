@@ -66,6 +66,7 @@
     &__field {
         @include flex-column;
         gap: $space-xs;
+        min-width: 0;
     }
 
     &__label {
@@ -82,6 +83,8 @@
     &__input,
     &__select,
     &__textarea {
+        width: 100%;
+        overflow: hidden;
         padding: $space-sm $space-md;
         background: $glass-bg;
         border: 1px solid $glass-border;

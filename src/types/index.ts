@@ -1,5 +1,17 @@
-// ─── Sport ───────────────────────────────────────────────────────────────────
-export type Sport = 'baseball' | 'hockey' | 'football' | 'basketball'
+// ─── Card Category ────────────────────────────────────────────────────────────
+export type CardCategory =
+    | 'baseball'
+    | 'hockey'
+    | 'football'
+    | 'basketball'
+    | 'soccer'
+    | 'golf'
+    | 'tennis'
+    | 'wrestling'
+    | 'pokemon'
+    | 'magic'
+    | 'yugioh'
+    | 'other'
 
 // ─── Card Condition ───────────────────────────────────────────────────────────
 export type CardCondition =
@@ -21,9 +33,9 @@ export interface Card {
     player_name: string
     year: number
     brand: string
-    series: string | null        // e.g. "Topps Chrome", "Upper Deck Young Guns"
+    series: string | null
     card_number: string | null
-    sport: Sport
+    category: CardCategory
     condition: CardCondition
     purchase_price: number
     current_value: number
@@ -33,14 +45,14 @@ export interface Card {
     updated_at: string
 }
 
-// ─── Card Form Values (for React Hook Form) ───────────────────────────────────
+// ─── Card Form Values ─────────────────────────────────────────────────────────
 export interface CardFormValues {
     player_name: string
     year: number
     brand: string
     series: string
     card_number: string
-    sport: Sport
+    category: CardCategory
     condition: CardCondition
     purchase_price: number
     current_value: number
@@ -54,13 +66,13 @@ export interface AuthUser {
     created_at: string
 }
 
-// ─── Collection Filters (Redux UI state) ──────────────────────────────────────
+// ─── Collection Filters ───────────────────────────────────────────────────────
 export type SortField = 'player_name' | 'year' | 'current_value' | 'purchase_price' | 'created_at'
 export type SortDirection = 'asc' | 'desc'
 
 export interface CollectionFilters {
     search: string
-    sport: Sport | 'all'
+    category: CardCategory | 'all'
     condition: CardCondition | 'all'
     sortField: SortField
     sortDirection: SortDirection

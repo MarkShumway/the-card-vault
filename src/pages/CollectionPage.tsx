@@ -28,8 +28,8 @@ function CollectionPage() {
             )
         }
 
-        if (filters.sport !== 'all') {
-            result = result.filter((card) => card.sport === filters.sport)
+        if (filters.category !== 'all') {
+            result = result.filter((card) => card.category === filters.category)
         }
 
         if (filters.condition !== 'all') {

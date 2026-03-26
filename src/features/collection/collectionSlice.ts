@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { CollectionFilters, SortField, SortDirection } from '../../types'
+import type { CollectionFilters, CardCategory, SortField, SortDirection } from '../../types'
 
 interface CollectionState extends CollectionFilters {
     currentPage: number
@@ -9,7 +9,7 @@ interface CollectionState extends CollectionFilters {
 
 const initialState: CollectionState = {
     search: '',
-    sport: 'all',
+    category: 'all',
     condition: 'all',
     sortField: 'created_at',
     sortDirection: 'desc',
@@ -25,8 +25,8 @@ const collectionSlice = createSlice({
             state.search = action.payload
             state.currentPage = 1
         },
-        setSportFilter(state, action: PayloadAction<CollectionFilters['sport']>) {
-            state.sport = action.payload
+        setCategoryFilter(state, action: PayloadAction<CardCategory | 'all'>) {
+            state.category = action.payload
             state.currentPage = 1
         },
         setConditionFilter(state, action: PayloadAction<CollectionFilters['condition']>) {
@@ -55,7 +55,7 @@ const collectionSlice = createSlice({
 
 export const {
     setSearch,
-    setSportFilter,
+    setCategoryFilter,
     setConditionFilter,
     setSortField,
     setSortDirection,

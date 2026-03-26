@@ -31,7 +31,8 @@
 
         &:focus {
             outline: none;
-            border-color: $color-accent;
+            //border-color: $color-accent;
+            border-color: #286774;
             background: rgba($color-accent, 0.05);
             box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
         }
