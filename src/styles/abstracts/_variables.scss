@@ -1,42 +1,6 @@
-// Colors — base
-$color-accent:   #7c3aed;
-$color-accent-2: #06b6d4;
-$color-accent-3: #323232;
-$color-accent-4: #282828;
-
-// Gradient backgrounds
-$gradient-bg:     linear-gradient(180deg, #0a0a0a 0%, #2f2f2f 100%);
-$gradient-card:   linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.05));
-$gradient-accent: linear-gradient(135deg, #7c3aed, #06b6d4);
-
-// Glass
-$glass-bg:     rgba(255, 255, 255, 0.05);
-$glass-border: rgba(255, 255, 255, 0.12);
-$glass-hover:  rgba(255, 255, 255, 0.08);
-$glass-blur:   blur(16px);
-
-// Text
-$color-text-primary:   #ffffff;
-$color-text-secondary: #a0a0c0;
-$color-text-muted: #606070;
-
-// Status
-$color-success: #10b981;
-$color-warning: #f59e0b;
-$color-error:   #ef4444;
-
-// Spacing scale
-$space-xs:  4px;
-$space-sm:  8px;
-$space-md:  16px;
-$space-lg:  24px;
-$space-xl:  32px;
-$space-2xl: 48px;
-$space-3xl: 64px;
-
 // Typography
-$font-family-base:    'Inter', system-ui, -apple-system, sans-serif;
-$font-family-display: 'Syne', sans-serif;
+$font-family-base:    'DejaVuSans', system-ui, -apple-system, sans-serif;
+$font-family-display: 'DejaVuSans Bold', sans-serif;
 
 $font-size-xs:   0.75rem;
 $font-size-sm:   0.875rem;
@@ -51,7 +15,48 @@ $font-weight-regular:  400;
 $font-weight-medium:   500;
 $font-weight-semibold: 600;
 $font-weight-bold:     700;
-$font-style-italic:    italic;
+
+$tracking-tight: 0.05em;
+$tracking-normal: 0.1em;
+
+// Colors — base
+$color-accent-mint:        #00C9A7;
+$color-accent-amber:       #F5A623;
+$color-accent-blue:        #4A9ECC;
+$color-accent-light-gray:  #E8E8E8;
+$color-accent-cool-gray:   #6B7280;
+$color-accent-medium-gray: #323232;
+$color-accent-dark-gray:   #282828;
+
+// Gradient backgrounds
+$gradient-bg:     linear-gradient(180deg, #0a0a0a 0%, #2f2f2f 100%);
+$gradient-card:   linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.05));
+
+// Glass
+$glass-bg:     rgba(255, 255, 255, 0.05);
+$glass-border: rgba(255, 255, 255, 0.12);
+$glass-hover:  rgba(255, 255, 255, 0.08);
+$glass-blur:   blur(16px);
+
+// Text
+$color-text-muted: red;
+
+// Category
+$category-background: rgba(245, 166, 35, 0.12);
+
+// Status
+$color-success: #00C9A7;
+$color-warning: #F59E0B;
+$color-error:   #EF4444;
+
+// Spacing scale
+$space-xs:  4px;
+$space-sm:  8px;
+$space-md:  16px;
+$space-lg:  24px;
+$space-xl:  32px;
+$space-2xl: 48px;
+$space-3xl: 64px;
 
 // Borders
 $border-radius-sm:   4px;
@@ -59,14 +64,13 @@ $border-radius-md:   8px;
 $border-radius-lg:   12px;
 $border-radius-xl:   16px;
 $border-radius-full: 9999px;
-$border-color: rgba(255, 255, 255, 0.08);
-$border-color-highlight: #286774;
+$border-color:       rgba(255, 255, 255, 0.08);
 
 // Shadows
-$shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.4);
-$shadow-md:    0 4px 12px rgba(0, 0, 0, 0.5);
-$shadow-lg:    0 8px 24px rgba(0, 0, 0, 0.6);
-$shadow-glow:  0 0 24px rgba(124, 58, 237, 0.3);
+$shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.4);
+$shadow-md:        0 4px 12px rgba(0, 0, 0, 0.5);
+$shadow-lg:        0 8px 24px rgba(0, 0, 0, 0.6);
+$shadow-glow:      0 0 24px rgba(124, 58, 237, 0.3);
 $shadow-glow-cyan: 0 0 24px rgba(6, 182, 212, 0.2);
 
 // Transitions

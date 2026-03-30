@@ -22,18 +22,18 @@
         align-items: center;
         gap: $space-sm;
         font-size: $font-size-sm;
-        color: $color-text-secondary;
+        color: $color-accent-amber;
         margin-bottom: $space-xl;
         transition: all $transition-fast;
-        background: $glass-bg;
+        background: $category-background;
         border: 1px solid $glass-border;
         padding: $space-xs $space-md;
         border-radius: $border-radius-full;
 
         &:hover {
-            color: $color-text-primary;
-            border-color: $color-accent;
-            background: rgba($color-accent, 0.1);
+            color: $color-accent-light-gray;
+            border-color: $color-accent-amber;
+            background: rgba($color-accent-amber, 0.1);
         }
     }
 
@@ -53,27 +53,27 @@
     }
 
     &__image {
+        @include glass-card;
         width: 100%;
         aspect-ratio: 2 / 3;
         object-fit: contain;
         border-radius: $border-radius-lg;
         border: 1px solid $glass-border;
         box-shadow: $shadow-lg, $shadow-glow-cyan;
-        background: linear-gradient(135deg, rgba($color-accent, 0.15), rgba($color-accent-2, 0.08));
     }
 
     &__image-placeholder {
         @include flex-center;
         width: 100%;
         aspect-ratio: 2 / 3;
-        background: linear-gradient(135deg, rgba($color-accent, 0.2), rgba($color-accent-2, 0.1));
+        background: linear-gradient(135deg, rgba($color-accent-mint, 0.2), rgba($color-accent-mint, 0.1));
         border-radius: $border-radius-lg;
         border: 1px solid $glass-border;
 
         span {
             font-size: 5rem;
             font-weight: $font-weight-bold;
-            @include gradient-text;
+            color: $color-accent-light-gray;
             text-transform: uppercase;
         }
     }
@@ -92,8 +92,7 @@
     &__player-name {
         font-family: $font-family-display;
         font-size: $font-size-2xl;
-        letter-spacing: 0.04em;
-        @include gradient-text;
+        letter-spacing: $tracking-tight;
     }
 
     &__badges {
@@ -110,15 +109,11 @@
         text-transform: capitalize;
         border: 1px solid $glass-border;
 
-        &--category {
-            background: $glass-bg;
-            color: $color-text-secondary;
-        }
-
+        &--category,
         &--condition {
-            background: rgba($color-accent, 0.15);
-            border-color: rgba($color-accent, 0.3);
-            color: $color-accent;
+            background: rgba($category-background, 0.15);
+            border-color: rgba($category-background, 0.3);
+            color: $color-accent-amber;
         }
     }
 
@@ -138,15 +133,15 @@
 
     &__stat-label {
         font-size: $font-size-xs;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: $tracking-tight;
     }
 
     &__stat-value {
         font-size: $font-size-xl;
         font-weight: $font-weight-bold;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
 
         &--profit {
             color: $color-success;
@@ -168,9 +163,9 @@
     &__details-title {
         font-size: $font-size-sm;
         font-weight: $font-weight-semibold;
-        color: $color-accent-2;
+        color: $color-accent-blue;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: $tracking-normal;
         padding-bottom: $space-sm;
         border-bottom: 1px solid $glass-border;
     }
@@ -188,14 +183,14 @@
 
     &__detail-label {
         font-size: $font-size-xs;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: $tracking-tight;
     }
 
     &__detail-value {
         font-size: $font-size-base;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
         font-weight: $font-weight-medium;
     }
 
@@ -209,14 +204,14 @@
     &__notes-title {
         font-size: $font-size-sm;
         font-weight: $font-weight-semibold;
-        color: $color-accent-2;
+        color: $color-accent-blue;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: $tracking-normal;
     }
 
     &__notes-text {
         font-size: $font-size-base;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         line-height: 1.7;
     }
 
@@ -228,10 +223,10 @@
 
     &__edit-btn {
         padding: $space-sm $space-xl;
-        background: $gradient-accent;
+        background: $color-accent-mint;
         border: none;
         border-radius: $border-radius-md;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
         font-size: $font-size-base;
         font-weight: $font-weight-semibold;
         transition: all $transition-fast;
@@ -239,7 +234,7 @@
 
         &:hover {
             transform: translateY(-1px);
-            box-shadow: 0 0 32px rgba($color-accent, 0.5);
+            box-shadow: 0 0 32px rgba($color-accent-cool-gray, 0.5);
         }
     }
 
@@ -255,7 +250,7 @@
 
         &:hover:not(:disabled) {
             background: $color-error;
-            color: $color-text-primary;
+            color: $color-accent-light-gray;
             box-shadow: 0 0 20px rgba($color-error, 0.3);
         }
 
@@ -269,7 +264,7 @@
     &__error {
         @include flex-center;
         min-height: 400px;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         font-size: $font-size-lg;
     }
 

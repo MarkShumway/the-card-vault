@@ -7,17 +7,21 @@
 
     &__main {
         flex: 1;
-        padding: $space-xl $space-xl 100px $space-xl;
+        padding: $space-md $space-md $space-2xl $space-md;
 
         @include respond-to(md) {
-            padding: $space-2xl $space-2xl 100px $space-2xl;
+            padding: $space-2xl;
         }
     }
 
     &__grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: $space-lg;
+        grid-template-columns: 1fr;
+        gap: $space-md;
+
+        @include respond-to(sm) {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
     }
 
     &__state {
@@ -25,7 +29,7 @@
         @include flex-center;
         gap: $space-md;
         min-height: 400px;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         text-align: center;
 
         &--error {
@@ -36,18 +40,18 @@
     &__empty-title {
         font-size: $font-size-xl;
         font-weight: $font-weight-semibold;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
     }
 
     &__empty-sub {
         font-size: $font-size-base;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
     }
 
     &__add-btn {
         padding: $space-sm $space-xl;
-        background: $gradient-accent;
-        color: $color-text-primary;
+        background: $gradient-bg;
+        color: $color-accent-light-gray;
         font-size: $font-size-base;
         font-weight: $font-weight-semibold;
         border-radius: $border-radius-md;
@@ -68,8 +72,8 @@
         width: 56px;
         height: 56px;
         @include flex-center;
-        background: $gradient-accent;
-        color: $color-text-primary;
+        background: $color-accent-mint;
+        color: $color-accent-light-gray;
         font-size: $font-size-2xl;
         border-radius: $border-radius-full;
         box-shadow: $shadow-lg, $shadow-glow;
@@ -77,9 +81,8 @@
         z-index: 50;
 
         &:hover {
-            //background-color: $color-accent-hover;
             transform: scale(1.08) translateY(-2px);
-            box-shadow: $shadow-lg, 0 0 32px rgba($color-accent, 0.5);
+            box-shadow: $shadow-lg, 0 0 32px rgba($color-accent-mint, 0.5);
         }
     }
 }

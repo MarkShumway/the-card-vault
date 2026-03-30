@@ -37,30 +37,30 @@
     }
 
     &__icon {
-        font-size: 2.5rem;
+        font-size: $font-size-3xl;
         line-height: 1;
     }
 
     &__title {
         font-family: $font-family-display;
         font-size: $font-size-2xl;
-        letter-spacing: 0.04em;
+        letter-spacing: $tracking-tight;
         color: $color-warning;
     }
 
     &__message {
         font-size: $font-size-base;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         margin-bottom: -$space-sm;
     }
 
     &__countdown {
         font-family: $font-family-base;
-        font-size: 3rem;
+        font-size: $font-size-3xl;
         font-weight: $font-weight-bold;
         color: $color-warning;
         text-shadow: 0 0 24px rgba($color-warning, 0.5);
-        letter-spacing: 0.1em;
+        letter-spacing: $tracking-normal;
     }
 
     &__sub {
@@ -88,17 +88,17 @@
 
         &:hover {
             background: $color-error;
-            color: $color-text-primary;
+            color: $color-accent-light-gray;
         }
     }
 
     &__stay {
         flex: 1;
         padding: $space-sm $space-md;
-        background: $gradient-accent;
+        background: $gradient-bg;
         border: none;
         border-radius: $border-radius-md;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
         font-size: $font-size-base;
         font-weight: $font-weight-semibold;
         transition: all $transition-fast;
@@ -106,7 +106,7 @@
 
         &:hover {
             transform: translateY(-1px);
-            box-shadow: 0 0 32px rgba($color-accent, 0.5);
+            box-shadow: 0 0 32px rgba($color-accent-mint, 0.5);
         }
     }
 }

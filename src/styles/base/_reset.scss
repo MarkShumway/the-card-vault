@@ -12,16 +12,19 @@ html {
     font-size: 16px;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
+    overflow-x: hidden;
+    max-width: 100%;
     font-family: $font-family-base;
     font-size: $font-size-base;
     font-weight: $font-weight-regular;
     line-height: 1.6;
-    color: $color-text-primary;
-    background: $gradient-bg;
-    background-attachment: fixed;
+    color: $color-accent-light-gray;
+    background: $gradient-bg fixed;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
