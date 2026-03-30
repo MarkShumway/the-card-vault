@@ -11,6 +11,7 @@ import {
 } from '../features/cards/cardsApi'
 import { useAppSelector } from '../store/hooks'
 import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
 import type { CardCategory, CardCondition } from '../types'
 import {formatCurrency, formatPercent, calcProfit, formatDate} from '../utils/formatters'
 import * as React from "react";
@@ -309,6 +310,7 @@ function CardDetailPage() {
                         </div>
                     </div>
                 </main>
+                <Footer />
             </div>
         )
     }
@@ -535,6 +537,8 @@ function CardDetailPage() {
                     </div>
                 </form>
             </main>
+
+            <Footer />
         </div>
     )
 }

@@ -3,8 +3,7 @@
 
 .welcome {
     min-height: 100vh;
-    background: $gradient-bg;
-    background-attachment: fixed;
+    background: $gradient-bg fixed;
     display: grid;
     grid-template-columns: 1fr;
 
@@ -34,11 +33,9 @@
     &__title {
         font-family: $font-family-display;
         font-size: $font-size-3xl;
-        font-weight: $font-weight-bold;
-        font-style: $font-style-italic;
         line-height: 1;
-        letter-spacing: 0.06em;
-        @include gradient-text;
+        letter-spacing: $tracking-tight;
+        color: $color-accent-light-gray;
 
         @include respond-to(md) {
             font-size: $font-size-3xl;
@@ -47,7 +44,7 @@
 
     &__tagline {
         font-size: $font-size-lg;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         max-width: 480px;
         line-height: 1.7;
     }
@@ -68,10 +65,10 @@
         height: 40px;
         flex-shrink: 0;
         @include flex-center;
-        background: rgba($color-accent, 0.15);
-        border: 1px solid rgba($color-accent, 0.3);
+        background: rgba($color-accent-mint, 0.15);
+        border: 1px solid rgba($color-accent-mint, 0.3);
         border-radius: $border-radius-md;
-        font-size: 1.1rem;
+        font-size: $font-size-lg;
     }
 
     &__feature-text {
@@ -82,12 +79,12 @@
     &__feature-title {
         font-size: $font-size-base;
         font-weight: $font-weight-semibold;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
     }
 
     &__feature-desc {
         font-size: $font-size-sm;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         line-height: 1.6;
     }
 

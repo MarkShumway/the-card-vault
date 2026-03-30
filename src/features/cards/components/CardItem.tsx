@@ -34,10 +34,10 @@ function CardItem({ card }: CardItemProps) {
                         <span>{card.player_name.charAt(0)}</span>
                     </div>
                 )}
-                <span className="card-item__category">{card.category}</span>
             </div>
 
             <div className="card-item__body">
+                <span className="card-item__category">{card.category}</span>
                 <div className="card-item__header">
                     <h3 className="card-item__player">{card.player_name}</h3>
                     <span className="card-item__condition">{card.condition}</span>

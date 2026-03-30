@@ -12,10 +12,10 @@
 
     &__info {
         font-size: $font-size-sm;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
 
         strong {
-            color: $color-text-primary;
+            color: $color-accent-light-gray;
             font-weight: $font-weight-semibold;
         }
     }
@@ -34,16 +34,16 @@
         background: $glass-bg;
         border: 1px solid $glass-border;
         border-radius: $border-radius-md;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         font-size: $font-size-sm;
         font-weight: $font-weight-medium;
         transition: all $transition-fast;
         cursor: pointer;
 
         &:hover:not(:disabled) {
-            border-color: $color-accent;
-            color: $color-accent;
-            background: rgba($color-accent, 0.1);
+            border-color: $color-accent-mint;
+            color: $color-accent-mint;
+            background: rgba($color-accent-mint, 0.1);
         }
 
         &:disabled {
@@ -52,21 +52,21 @@
         }
 
         &--active {
-            background: $gradient-accent;
+            background: $color-accent-mint;
             border-color: transparent;
-            color: $color-text-primary;
+            color: $color-accent-light-gray;
             box-shadow: $shadow-glow;
 
             &:hover {
-                background: $gradient-accent;
-                color: $color-text-primary;
+                background: $color-accent-mint;
+                color: $color-accent-light-gray;
                 border-color: transparent;
             }
         }
     }
 
     &__ellipsis {
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         padding: 0 $space-xs;
         font-size: $font-size-sm;
     }
@@ -78,7 +78,7 @@
 
     &__size-label {
         font-size: $font-size-sm;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
     }
 
     &__size-select {
@@ -86,7 +86,7 @@
         background: $glass-bg;
         border: 1px solid $glass-border;
         border-radius: $border-radius-md;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
         font-size: $font-size-sm;
         cursor: pointer;
         transition: all $transition-fast;
@@ -98,11 +98,7 @@
 
         &:focus {
             outline: none;
-            border-color: $color-accent;
-        }
-
-        option {
-            background-color: #1a0a2e;
+            border-color: $color-accent-mint;
         }
     }
 }

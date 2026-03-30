@@ -1,0 +1,77 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.footer {
+    @include glass;
+    @include flex-column;
+    gap: $space-md;
+    padding: $space-md $space-xl;
+    border-top: 1px solid $glass-border;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin-top: auto;
+
+    @include respond-to(lg) {
+        @include flex-center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+    }
+
+    &__brand {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: $space-sm;
+    }
+
+    &__logo {
+        width: 20px;
+        height: 20px;
+        opacity: 0.8;
+    }
+
+    &__name {
+        font-family: $font-family-display;
+        font-size: $font-size-base;
+        letter-spacing: $tracking-tight;
+    }
+
+    &__meta {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: $space-md;
+        flex-wrap: wrap;
+    }
+
+    &__copyright {
+        font-size: $font-size-xs;
+        color: $color-accent-light-gray;
+    }
+
+    &__divider {
+        color: $color-accent-light-gray;
+        font-size: $font-size-xs;
+    }
+
+    &__version {
+        font-size: $font-size-xs;
+        color: $color-accent-light-gray;
+        font-family: $font-family-base;
+    }
+
+    &__links {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: $space-md;
+    }
+
+    &__link {
+        font-size: $font-size-xs;
+        color: $color-accent-light-gray;
+        transition: color $transition-fast;
+
+        &:hover {
+            color: $color-accent-mint;
+        }
+    }
+}

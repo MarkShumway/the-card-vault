@@ -20,8 +20,8 @@
     &__heading {
         font-family: $font-family-display;
         font-size: $font-size-2xl;
-        letter-spacing: 0.06em;
-        @include gradient-text;
+        letter-spacing: $tracking-tight;
+        color: $color-accent-light-gray;
         margin-bottom: $space-xl;
     }
 }
@@ -40,9 +40,9 @@
     &__section-title {
         font-size: $font-size-sm;
         font-weight: $font-weight-semibold;
-        color: $color-accent-2;
+        color: $color-accent-blue;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: $tracking-normal;
         padding-bottom: $space-sm;
         border-bottom: 1px solid $glass-border;
     }
@@ -72,10 +72,10 @@
     &__label {
         font-size: $font-size-sm;
         font-weight: $font-weight-medium;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
 
         span {
-            color: $color-accent;
+            color: $color-accent-mint;
             margin-left: 2px;
         }
     }
@@ -89,19 +89,19 @@
         background: $glass-bg;
         border: 1px solid $glass-border;
         border-radius: $border-radius-md;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
         font-size: $font-size-base;
         transition: all $transition-fast;
 
         &::placeholder {
-            color: $color-text-secondary;
+            color: $color-accent-cool-gray;
         }
 
         &:focus {
             outline: none;
-            border-color: $color-accent;
-            background: rgba($color-accent, 0.05);
-            box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+            border-color: $color-accent-mint;
+            background: rgba($color-accent-mint, 0.05);
+            box-shadow: 0 0 0 3px rgba($color-accent-mint, 0.1);
         }
 
         &--error {
@@ -147,15 +147,15 @@
         aspect-ratio: 2 / 3;
         border: 2px dashed $glass-border;
         border-radius: $border-radius-md;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         font-size: $font-size-sm;
         cursor: pointer;
         transition: all $transition-fast;
 
         &:hover {
-            border-color: $color-accent;
-            color: $color-accent;
-            background: rgba($color-accent, 0.05);
+            border-color: $color-accent-mint;
+            color: $color-accent-mint;
+            background: rgba($color-accent-mint, 0.05);
         }
     }
 
@@ -176,23 +176,23 @@
         background: $glass-bg;
         border: 1px solid $glass-border;
         border-radius: $border-radius-md;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
         font-size: $font-size-base;
         font-weight: $font-weight-medium;
         transition: all $transition-fast;
 
         &:hover {
-            border-color: $color-text-secondary;
-            color: $color-text-primary;
+            border-color: $color-accent-cool-gray;
+            color: $color-accent-light-gray;
         }
     }
 
     &__submit {
         padding: $space-sm $space-xl;
-        background: $gradient-accent;
+        background: $color-accent-mint;
         border: none;
         border-radius: $border-radius-md;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
         font-size: $font-size-base;
         font-weight: $font-weight-semibold;
         transition: all $transition-fast;
@@ -200,7 +200,7 @@
 
         &:hover:not(:disabled) {
             transform: translateY(-1px);
-            box-shadow: 0 0 32px rgba($color-accent, 0.5);
+            box-shadow: 0 0 32px rgba($color-accent-mint, 0.5);
         }
 
         &:disabled {

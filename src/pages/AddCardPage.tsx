@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useAddCardMutation, useUploadCardImageMutation } from '../features/cards/cardsApi'
 import { useAppSelector } from '../store/hooks'
 import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
 import type { CardCategory, CardCondition } from '../types'
 
 // ─── Zod schema ───────────────────────────────────────────────────────────────
@@ -169,6 +170,20 @@ function AddCardPage() {
 
                             <div className="card-form__field">
                                 <label className="card-form__label">
+                                    Brand <span>*</span>
+                                </label>
+                                <input
+                                    className={`card-form__input${errors.brand ? ' card-form__input--error' : ''}`}
+                                    placeholder="e.g. Topps"
+                                    {...register('brand')}
+                                />
+                                {errors.brand && (
+                                    <span className="card-form__error">{errors.brand.message}</span>
+                                )}
+                            </div>
+
+                            <div className="card-form__field">
+                                <label className="card-form__label">
                                     Category <span>*</span>
                                 </label>
                                 <select
@@ -195,7 +210,9 @@ function AddCardPage() {
                                     </optgroup>
                                 </select>
                             </div>
+                        </div>
 
+                        <div className="card-form__row">
                             <div className="card-form__field">
                                 <label className="card-form__label">Series</label>
                                 <input
@@ -204,9 +221,7 @@ function AddCardPage() {
                                     {...register('series')}
                                 />
                             </div>
-                        </div>
 
-                        <div className="card-form__row">
                             <div className="card-form__field">
                                 <label className="card-form__label">Card Number</label>
                                 <input
@@ -361,6 +376,8 @@ function AddCardPage() {
 
                 </form>
             </main>
+
+            <Footer />
         </div>
     )
 }

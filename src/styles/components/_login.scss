@@ -4,8 +4,7 @@
 .login {
     @include flex-center;
     min-height: 100vh;
-    background: $gradient-bg;
-    background-attachment: fixed;
+    background: $gradient-bg fixed;
 
     &__card {
         @include glass-card;
@@ -24,7 +23,7 @@
             left: -60px;
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba($color-accent, 0.15), transparent 70%);
+            background: radial-gradient(circle, rgba($color-accent-mint, 0.15), transparent 70%);
             pointer-events: none;
         }
 
@@ -35,7 +34,7 @@
             right: -60px;
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba($color-accent-2, 0.1), transparent 70%);
+            background: radial-gradient(circle, rgba($color-accent-mint, 0.1), transparent 70%);
             pointer-events: none;
         }
     }
@@ -50,13 +49,13 @@
     &__title {
         font-family: $font-family-display;
         font-size: $font-size-2xl;
-        letter-spacing: 0.06em;
-        @include gradient-text;
+        letter-spacing: $tracking-tight;
+        color: $color-accent-light-gray;
     }
 
     &__subtitle {
         font-size: $font-size-sm;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
     }
 
     &__form {
@@ -72,7 +71,7 @@
     &__label {
         font-size: $font-size-sm;
         font-weight: $font-weight-medium;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
     }
 
     &__input {
@@ -80,19 +79,19 @@
         background: $glass-bg;
         border: 1px solid $glass-border;
         border-radius: $border-radius-md;
-        color: $color-text-primary;
+        color: $color-accent-light-gray;
         font-size: $font-size-base;
         transition: all $transition-fast;
 
         &::placeholder {
-            color: $color-text-secondary;
+            color: $color-accent-cool-gray;
         }
 
         &:focus {
             outline: none;
-            border-color: $color-accent;
-            background: rgba($color-accent, 0.05);
-            box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+            border-color: $color-accent-mint;
+            background: rgba($color-accent-mint, 0.05);
+            box-shadow: 0 0 0 3px rgba($color-accent-mint, 0.1);
         }
 
         &--error {
@@ -107,8 +106,8 @@
 
     &__button {
         padding: $space-sm $space-md;
-        background: $gradient-accent;
-        color: $color-text-primary;
+        background: $color-accent-mint;
+        color: $color-accent-light-gray;
         font-size: $font-size-base;
         font-weight: $font-weight-semibold;
         border-radius: $border-radius-md;
@@ -120,7 +119,7 @@
 
         &:hover:not(:disabled) {
             transform: translateY(-1px);
-            box-shadow: 0 0 32px rgba($color-accent, 0.5);
+            box-shadow: 0 0 32px rgba($color-accent-mint, 0.3);
         }
 
         &:disabled {
@@ -132,16 +131,16 @@
     &__toggle {
         text-align: center;
         font-size: $font-size-sm;
-        color: $color-text-secondary;
+        color: $color-accent-cool-gray;
 
         button {
-            color: $color-accent;
+            color: $color-accent-mint;
             font-weight: $font-weight-medium;
             margin-left: $space-xs;
             text-decoration: underline;
 
             &:hover {
-                color: $color-accent-2;
+                color: $color-accent-mint;
             }
         }
     }

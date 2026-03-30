@@ -107,7 +107,6 @@ function WelcomePage() {
 
     return (
         <div className="welcome">
-
             {/* ── Left — Hero ── */}
             <div className="welcome__hero">
                 <div className="welcome__logo">
@@ -116,7 +115,7 @@ function WelcomePage() {
                         <h1 className="welcome__title">The Card Vault</h1>
                     </div>
                     <p className="welcome__tagline">
-                        The modern way to manage your sports card collection.
+                        The modern way to manage your card collection.
                         Track value, organize by sport, and never lose sight of
                         what your collection is worth.
                     </p>
@@ -151,10 +150,10 @@ function WelcomePage() {
                             onSubmit={signUpForm.handleSubmit(handleSignUp)}
                         >
                             <div style={{ marginBottom: '1.5rem' }}>
-                                <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text-primary, #fff)', marginBottom: '0.25rem' }}>
+                                <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-accent-light-gray, #fff)', marginBottom: '0.25rem' }}>
                                     Create your account
                                 </h2>
-                                <p style={{ fontSize: '0.875rem', color: '#a0a0c0' }}>
+                                <p style={{ fontSize: '0.875rem', color: '#6B7280' }}>
                                     Free forever. No credit card required.
                                 </p>
                             </div>
@@ -217,10 +216,10 @@ function WelcomePage() {
                             onSubmit={loginForm.handleSubmit(handleLogin)}
                         >
                             <div style={{ marginBottom: '1.5rem' }}>
-                                <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-text-primary, #fff)', marginBottom: '0.25rem' }}>
+                                <h2 style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--color-accent-light-gray, #fff)', marginBottom: '0.25rem' }}>
                                     Welcome back
                                 </h2>
-                                <p style={{ fontSize: '0.875rem', color: '#a0a0c0' }}>
+                                <p style={{ fontSize: '0.875rem', color: '#6B7280' }}>
                                     Sign in to view your collection
                                 </p>
                             </div>
