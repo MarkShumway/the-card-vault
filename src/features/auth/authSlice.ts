@@ -1,3 +1,21 @@
+/**
+ * authSlice.ts
+ *
+ * Redux slice for managing authentication state. Tracks the current user,
+ * loading status, initialization flag, and session warning visibility.
+ *
+ * State shape (AuthState):
+ *   - user              Current authenticated user, or null if unauthenticated
+ *   - isLoading         True while an auth operation (e.g. sign-in) is in progress
+ *   - isInitialized     True once auth state has been resolved on app load
+ *   - showSessionWarning  True when the session expiry warning should be displayed
+ *
+ * Reducers:
+ *   - setUser           Sets the current user and marks auth as initialized
+ *   - setAuthLoading    Toggles the loading flag
+ *   - setShowWarning    Toggles the session expiry warning
+ */
+
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { AuthUser } from '../../types'
