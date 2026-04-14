@@ -1,3 +1,39 @@
+/**
+ * useSessionTimeout.ts
+ *
+ * Custom React hook that enforces an inactivity-based session timeout.
+ * Monitors user activity and automatically signs out after a period of
+ * inactivity, with an advance warning before the session expires.
+ *
+ * Timeout behavior:
+ *   - 25 minutes of inactivity  Dispatches setShowWarning(true) to surface
+ *                                a session expiry warning to the user
+ *   - 30 minutes of inactivity  Signs the user out and redirects to '/'
+ *
+ * Activity events that reset the timer:
+ *   mousedown, mousemove, keydown, scroll, touchstart, click
+ *
+ * Internal logic:
+ *   - resetTimer    Clears existing timers, hides the warning, and starts
+ *                   fresh warning and timeout countdowns. No-ops if no user
+ *                   is currently authenticated.
+ *   - clearTimers   Cancels both the warning and timeout timers.
+ *   - signOut       Clears timers, signs out via Supabase, clears Redux auth
+ *                   state, hides the warning, and navigates to '/'.
+ *
+ * Lifecycle:
+ *   - Timers and event listeners are registered when a user is present.
+ *   - All listeners and timers are cleaned up on unmount or when the user
+ *     is cleared from state, preventing memory leaks.
+ *
+ * Returns:
+ *   - signOut  Exposed so the session warning UI can trigger a manual sign-out
+ *
+ * Usage:
+ *   Call once in a top-level authenticated layout component alongside
+ *   useAuthListener. Do not call inside per-page components.
+ */
+
 import { useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../services/supabase'

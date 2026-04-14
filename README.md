@@ -49,24 +49,29 @@ A modern, full-stack card collection tracker built with React, TypeScript, and S
 
 ---
 
-## Architecture
-src/  
-├── assets/                  # Static assets  
-├── components/  
-│   ├── common/              # Reusable UI components  
-│   └── layout/              # Header, Footer  
-├── features/  
-│   ├── auth/                # Auth slice + state  
-│   ├── cards/               # RTK Query API + CardItem component  
-│   └── collection/          # Filter/sort slice + CollectionFilters  
-├── hooks/                   # useAuthListener, useSessionTimeout  
-├── pages/                   # Route-level page components  
-├── routes/                  # React Router configuration  
-├── services/                # Supabase client  
-├── store/                   # Redux store + typed hooks  
-├── styles/                  # SCSS architecture (abstracts, base, components)  
-├── types/                   # TypeScript interfaces + Supabase generated types  
-└── utils/                   # formatters.ts
+## Project Architecture
+```
+src/
+|---- assets/           # Static assets
+|---- components/
+|   |---- common/       # Reusable UI components
+|   |---- layout/       # Header + footer
+|---- features/
+|   |---- auth/         # Auth slice and state
+|   |---- cards/        # RTK query API + CardItem component
+|   |---- collection/   # Filter/sort slice + CollectionFilters
+|---- hooks/            # Listener and timeout
+|---- pages/            # Route-level page components
+|---- routes/           # React Router configuration
+|---- services/         # Supabase client
+|---- store/            # Redux store + typed hooks
+|---- styles/           # SCSS architecture
+|   |---- abstracts/    # Global styles
+|   |---- base/         # Reset styles
+|   |---- components/   # Component specific styles
+|---- types/            # TypeScript interfaces + Supabase generated types
+|---- utils/            # Formatters
+```
 
 ---
 

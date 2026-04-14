@@ -1,3 +1,29 @@
+/**
+ * collectionSlice.ts
+ *
+ * Redux slice for managing the card collection browser UI state. Tracks
+ * filter, sort, and pagination state used to query and display the collection.
+ *
+ * State shape (CollectionState extends CollectionFilters):
+ *   - search          Text search string applied against card names/details
+ *   - category        Active category filter ('all' or a specific CardCategory)
+ *   - condition       Active condition filter ('all' or a specific card condition)
+ *   - sortField       Field currently used to sort results (default: 'created_at')
+ *   - sortDirection   Sort order, 'asc' or 'desc' (default: 'desc')
+ *   - currentPage     Current pagination page (1-based, default: 1)
+ *   - pageSize        Number of cards displayed per page (default: 12)
+ *
+ * Reducers:
+ *   - setSearch           Updates the search string and resets to page 1
+ *   - setCategoryFilter   Sets the category filter and resets to page 1
+ *   - setConditionFilter  Sets the condition filter and resets to page 1
+ *   - setSortField        Updates the sort field and resets to page 1
+ *   - setSortDirection    Updates the sort direction (page is not reset)
+ *   - setCurrentPage      Navigates to a specific page
+ *   - setPageSize         Updates the page size and resets to page 1
+ *   - resetFilters        Restores all filter/sort/page defaults while preserving pageSize
+ */
+
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { CollectionFilters, CardCategory, SortField, SortDirection } from '../../types'

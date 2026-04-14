@@ -1,3 +1,26 @@
+/**
+ * useAuthListener.ts
+ *
+ * Custom React hook that synchronizes Supabase authentication state with
+ * the Redux store. Intended to be called once at the application root so
+ * that auth state is available globally for the lifetime of the app.
+ *
+ * Behavior:
+ *   1. On mount, retrieves any existing Supabase session and dispatches
+ *      setUser() with the current user, or null if no session is found.
+ *   2. Subscribes to Supabase auth state change events (sign-in, sign-out,
+ *      token refresh) and keeps the Redux store in sync for each event.
+ *   3. On unmount, unsubscribes from the auth listener to prevent memory leaks.
+ *
+ * Dispatches:
+ *   - setUser(AuthUser)  When a valid session is present
+ *   - setUser(null)      When no session exists or the user signs out
+ *
+ * Usage:
+ *   Call once in App.tsx or a top-level layout component — do not call
+ *   in multiple places, as each call creates its own Supabase subscription.
+ */
+
 import { useEffect } from 'react'
 import { supabase } from '../services/supabase'
 import { setUser } from '../features/auth/authSlice'

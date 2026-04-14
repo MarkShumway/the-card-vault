@@ -1,3 +1,34 @@
+/**
+ * index.ts
+ *
+ * Central type definitions for The Card Vault. This is the primary types
+ * entry point — all application code should import shared types from here
+ * rather than directly from database.ts or other feature files.
+ *
+ * Domain types:
+ *   - CardCategory      Union of supported card sport/game categories
+ *   - CardCondition     Union of graded (PSA, BGS) and raw condition values
+ *   - Card              Full card entity as stored and retrieved from the database
+ *   - CardFormValues    Shape of the add/edit card form (no id, user_id, timestamps,
+ *                       or nullable fields — all values are plain strings/numbers)
+ *
+ * Auth types:
+ *   - AuthUser          Subset of the Supabase user object stored in Redux auth state
+ *
+ * Collection UI types:
+ *   - SortField         Union of fields available for sorting the collection browser
+ *   - SortDirection     'asc' | 'desc'
+ *   - CollectionFilters Full filter and sort state shape used by collectionSlice
+ *
+ * API types:
+ *   - ApiError          Normalized error shape for failed data operations
+ *
+ * Supabase type helpers (derived from database.ts):
+ *   - CardRow           Resolved Row shape for the cards table
+ *   - CardInsert        Resolved Insert shape for the cards table
+ *   - CardUpdate        Resolved Update shape for the cards table (all fields optional)
+ */
+
 // ─── Card Category ────────────────────────────────────────────────────────────
 export type CardCategory =
     | 'baseball'
