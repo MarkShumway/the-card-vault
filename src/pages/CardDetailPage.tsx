@@ -12,6 +12,7 @@ import {
 import { useAppSelector } from '../store/hooks'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+import EbayPricing from '../features/cards/components/EbayPricing'
 import type { CardCategory, CardCondition } from '../types'
 import {formatCurrency, formatPercent, calcProfit, formatDate} from '../utils/formatters'
 import * as React from "react";
@@ -289,6 +290,9 @@ function CardDetailPage() {
                                     <p className="card-detail-page__notes-text">{card.notes}</p>
                                 </div>
                             )}
+
+                            {/* eBay Pricing */}
+                            <EbayPricing card={card} />
 
                             {/* Actions */}
                             <div className="card-detail-page__actions">

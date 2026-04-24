@@ -1,0 +1,155 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.ebay-pricing {
+    @include glass-card;
+    padding: $space-lg;
+    @include flex-column;
+    gap: $space-md;
+
+    &__header {
+        @include flex-between;
+        flex-wrap: wrap;
+        gap: $space-sm;
+    }
+
+    &__title {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-accent-mint;
+        text-transform: uppercase;
+        letter-spacing: $tracking-normal;
+    }
+
+    &__fetch-btn {
+        padding: $space-xs $space-md;
+        background: $color-accent-mint;
+        border: none;
+        border-radius: $border-radius-md;
+        color: $color-accent-dark-gray;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        cursor: pointer;
+        transition: all $transition-fast;
+
+        &:hover:not(:disabled) {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-md;
+    }
+
+    &__stat {
+        @include glass-card;
+        padding: $space-md;
+        @include flex-column;
+        gap: 2px;
+        text-align: center;
+    }
+
+    &__stat-label {
+        font-size: $font-size-xs;
+        color: $color-accent-cool-gray;
+        text-transform: uppercase;
+        letter-spacing: $tracking-tight;
+    }
+
+    &__stat-value {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-bold;
+        color: $color-success;
+
+        &--low {
+            color: $color-accent-blue;
+        }
+
+        &--high {
+            color: $color-accent-amber;
+        }
+    }
+
+    &__count {
+        font-size: $font-size-xs;
+        color: $color-accent-cool-gray;
+        text-align: center;
+    }
+
+    &__listings {
+        @include flex-column;
+        gap: $space-sm;
+        padding-top: $space-sm;
+        border-top: 1px solid $glass-border;
+    }
+
+    &__listings-title {
+        font-size: $font-size-xs;
+        color: $color-accent-cool-gray;
+        text-transform: uppercase;
+        letter-spacing: $tracking-tight;
+    }
+
+    &__listing {
+        @include flex-between;
+        gap: $space-md;
+        padding: $space-sm;
+        background: $glass-bg;
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-md;
+        transition: border-color $transition-fast;
+
+        &:hover {
+            border-color: $color-accent-mint;
+        }
+    }
+
+    &__listing-title {
+        font-size: $font-size-xs;
+        color: $color-accent-light-gray;
+        @include truncate;
+        flex: 1;
+    }
+
+    &__listing-price {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-success;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    &__listing-link {
+        font-size: $font-size-xs;
+        color: $color-accent-blue;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: color $transition-fast;
+
+        &:hover {
+            color: $color-accent-mint;
+        }
+    }
+
+    &__error {
+        font-size: $font-size-sm;
+        color: $color-error;
+        text-align: center;
+        padding: $space-sm;
+    }
+
+    &__empty {
+        font-size: $font-size-sm;
+        color: $color-accent-cool-gray;
+        text-align: center;
+        padding: $space-sm;
+    }
+}
