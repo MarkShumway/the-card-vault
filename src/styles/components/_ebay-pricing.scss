@@ -22,15 +22,22 @@
     }
 
     &__fetch-btn {
-        padding: $space-xs $space-md;
+        padding: $space-xs $space-sm;
         background: $color-accent-mint;
         border: none;
         border-radius: $border-radius-md;
-        color: $color-accent-dark-gray;
-        font-size: $font-size-sm;
+        color: $color-accent-light-gray;
+        font-size: $font-size-xs;
         font-weight: $font-weight-semibold;
         cursor: pointer;
         transition: all $transition-fast;
+        white-space: nowrap;
+        flex-shrink: 0;
+
+        @include respond-to(md) {
+            font-size: $font-size-sm;
+            padding: $space-xs $space-md;
+        }
 
         &:hover:not(:disabled) {
             opacity: 0.85;
@@ -45,16 +52,25 @@
 
     &__stats {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: $space-md;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: $space-sm;
+
+        @include respond-to(md) {
+            gap: $space-md;
+        }
     }
 
     &__stat {
         @include glass-card;
-        padding: $space-md;
+        padding: $space-sm;
         @include flex-column;
         gap: 2px;
         text-align: center;
+        min-width: 0;
+
+        @include respond-to(md) {
+            padding: $space-md;
+        }
     }
 
     &__stat-label {
@@ -65,9 +81,14 @@
     }
 
     &__stat-value {
-        font-size: $font-size-lg;
+        font-size: $font-size-sm;
         font-weight: $font-weight-bold;
         color: $color-success;
+        word-break: break-word;
+
+        @include respond-to(md) {
+            font-size: $font-size-lg;
+        }
 
         &--low {
             color: $color-accent-blue;
@@ -100,12 +121,13 @@
 
     &__listing {
         @include flex-between;
-        gap: $space-md;
+        gap: $space-sm;
         padding: $space-sm;
         background: $glass-bg;
         border: 1px solid $glass-border;
         border-radius: $border-radius-md;
         transition: border-color $transition-fast;
+        min-width: 0;
 
         &:hover {
             border-color: $color-accent-mint;
