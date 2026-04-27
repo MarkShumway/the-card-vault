@@ -7,10 +7,11 @@
 
     &__main {
         flex: 1;
-        padding: $space-xl;
+        padding: $space-md;
         max-width: 900px;
         width: 100%;
         margin: 0 auto;
+        overflow: hidden;
 
         @include respond-to(md) {
             padding: $space-2xl;
@@ -43,6 +44,10 @@
         gap: $space-xl;
 
         @include respond-to(md) {
+            grid-template-columns: 260px 1fr;
+        }
+
+        @include respond-to(lg) {
             grid-template-columns: 320px 1fr;
         }
     }
@@ -81,24 +86,35 @@
     &__info-col {
         @include flex-column;
         gap: $space-xl;
+        min-width: 0;
+        overflow: hidden;
     }
 
     &__title-row {
         @include flex-between;
         gap: $space-md;
         flex-wrap: wrap;
+        min-width: 0;
     }
 
     &__player-name {
         font-family: $font-family-display;
-        font-size: $font-size-2xl;
+        font-size: $font-size-1xl;
         letter-spacing: $tracking-tight;
+        color: $color-accent-light-gray;
+        min-width: 0;
+        word-wrap: break-word;
+
+        @include respond-to(lg) {
+            font-size: $font-size-2xl;
+        }
     }
 
     &__badges {
         display: flex;
         gap: $space-sm;
         flex-wrap: wrap;
+        flex-shrink: 0;
     }
 
     &__badge {
@@ -119,16 +135,25 @@
 
     &__stats {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: $space-md;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: $space-sm;
+
+        @include respond-to(md) {
+            gap: $space-md;
+        }
     }
 
     &__stat {
         @include glass-card;
-        padding: $space-md;
+        padding: $space-sm;
         @include flex-column;
-        gap: $space-xs;
+        gap: $space-xxs;
         text-align: center;
+        min-width: 0;
+
+        @include respond-to(md) {
+            padding: $space-md;
+        }
     }
 
     &__stat-label {
@@ -142,6 +167,11 @@
         font-size: $font-size-xl;
         font-weight: $font-weight-bold;
         color: $color-accent-light-gray;
+        word-break: break-word;
+
+        @include respond-to(md) {
+            font-size: $font-size-lg;
+        }
 
         &--profit {
             color: $color-success;
