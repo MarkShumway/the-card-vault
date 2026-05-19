@@ -1,53 +1,20 @@
+import * as React from 'react'
 import { useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-    useGetCardByIdQuery,
-    useUpdateCardMutation,
-    useDeleteCardMutation,
-    useUploadCardImageMutation,
-} from '../features/cards/cardsApi'
+import { useGetCardByIdQuery,
+         useUpdateCardMutation,
+         useDeleteCardMutation,
+         useUploadCardImageMutation,
+       } from '../features/cards/cardsApi'
 import { useAppSelector } from '../store/hooks'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import EbayPricing from '../features/cards/components/EbayPricing'
 import type { CardCategory, CardCondition } from '../types'
 import {formatCurrency, formatPercent, calcProfit, formatDate} from '../utils/formatters'
-import * as React from "react";
-
-// ─── Zod schema ───────────────────────────────────────────────────────────────
-const editSchema = z.object({
-    player_name: z.string().min(1, 'Player name is required'),
-    year: z
-        .number({ error: 'Year is required' })
-        .int()
-        .min(1800, 'Year must be 1800 or later')
-        .max(new Date().getFullYear() + 1, 'Year cannot be in the future'),
-    brand: z.string().min(1, 'Brand is required'),
-    series: z.string().optional(),
-    card_number: z.string().optional(),
-    category: z.enum([
-        'baseball', 'hockey', 'football', 'basketball',
-        'soccer', 'golf', 'tennis', 'wrestling',
-        'pokemon', 'magic', 'yugioh', 'other'
-    ]),
-    condition: z.enum([
-        'PSA 10', 'PSA 9', 'PSA 8', 'PSA 7',
-        'BGS 9.5', 'BGS 9',
-        'Raw - Mint', 'Raw - Near Mint', 'Raw - Excellent', 'Raw - Good',
-    ]),
-    purchase_price: z
-        .number({ error: 'Purchase price is required' })
-        .min(0, 'Price cannot be negative'),
-    current_value: z
-        .number({ error: 'Current value is required' })
-        .min(0, 'Value cannot be negative'),
-    notes: z.string().optional(),
-})
-
-type EditFormValues = z.infer<typeof editSchema>
+import { cardSchema, type CardFormValues } from '../utils/cardSchema'
 
 // ─── Component ────────────────────────────────────────────────────────────────
 function CardDetailPage() {
@@ -71,8 +38,8 @@ function CardDetailPage() {
         handleSubmit,
         reset,
         formState: { errors },
-    } = useForm<EditFormValues>({
-        resolver: zodResolver(editSchema),
+    } = useForm<CardFormValues>({
+        resolver: zodResolver(cardSchema),
     })
 
     if (isLoading) {
@@ -132,7 +99,7 @@ function CardDetailPage() {
         navigate('/collection')
     }
 
-    const onSubmit = async (values: EditFormValues) => {
+    const onSubmit = async (values: CardFormValues) => {
         if (!user) return
         setServerError(null)
 

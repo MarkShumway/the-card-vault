@@ -20,3 +20,18 @@
 @use 'components/pagination';
 @use 'components/session-modal';
 @use 'components/ebay-pricing';
+
+// ─── Global layout wrapper ────────────────────────────────────────────────────
+.app-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.app-container--with-header {
+    padding-top: 80px;
+}

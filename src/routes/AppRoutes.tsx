@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import type { ReactNode } from 'react'
 import { useAppSelector } from '../store/hooks'
 import LoginPage from '../pages/LoginPage'
 import WelcomePage from '../pages/WelcomePage'
@@ -6,9 +7,8 @@ import CollectionPage from '../pages/CollectionPage'
 import AddCardPage from '../pages/AddCardPage'
 import CardDetailPage from '../pages/CardDetailPage'
 import SessionWarningModal from '../components/common/SessionWarningModal'
-import * as React from "react";
 
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
+function ProtectedRoute({ children }: { children: ReactNode }) {
     const { user, isInitialized } = useAppSelector((state) => state.auth)
 
     if (!isInitialized) return null
@@ -19,7 +19,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
     return (
-        <BrowserRouter>
+        <>
             <SessionWarningModal />
             <Routes>
                 <Route path="/" element={<WelcomePage />} />
@@ -50,7 +50,7 @@ function AppRoutes() {
                 />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
-        </BrowserRouter>
+        </>
     )
 }
 

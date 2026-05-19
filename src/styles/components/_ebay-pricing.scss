@@ -91,7 +91,7 @@
         }
 
         &--low {
-            color: $color-accent-blue;
+            color: $color-accent-mint;
         }
 
         &--high {
@@ -151,7 +151,7 @@
 
     &__listing-link {
         font-size: $font-size-xs;
-        color: $color-accent-blue;
+        color: $color-accent-mint;
         white-space: nowrap;
         flex-shrink: 0;
         transition: color $transition-fast;
