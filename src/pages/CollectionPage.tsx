@@ -116,13 +116,6 @@ function CollectionPage() {
 
             <Footer />
 
-            <button
-                className="collection-page__fab"
-                onClick={() => navigate('/add')}
-                aria-label="Add new card"
-            >
-                +
-            </button>
         </div>
     )
 }

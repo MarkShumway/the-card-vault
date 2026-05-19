@@ -4,10 +4,11 @@
 .collection-page {
     @include flex-column;
     min-height: 100vh;
+    position: relative;
 
     &__main {
         flex: 1;
-        padding: $space-md $space-md $space-2xl $space-md;
+        padding: $space-md;
 
         @include respond-to(md) {
             padding: $space-2xl;
@@ -16,11 +17,15 @@
 
     &__grid {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: $space-md;
 
         @include respond-to(sm) {
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        }
+
+        @include respond-to(xl) {
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         }
     }
 
@@ -62,27 +67,6 @@
         &:hover {
             transform: translateY(-1px);
             box-shadow: $shadow-glow, $shadow-md;
-        }
-    }
-
-    &__fab {
-        position: fixed;
-        bottom: $space-3xl;
-        right: $space-2xl;
-        width: 56px;
-        height: 56px;
-        @include flex-center;
-        background: $color-accent-mint;
-        color: $color-accent-light-gray;
-        font-size: $font-size-2xl;
-        border-radius: $border-radius-full;
-        box-shadow: $shadow-lg, $shadow-glow;
-        transition: all $transition-fast;
-        z-index: 50;
-
-        &:hover {
-            transform: scale(1.08) translateY(-2px);
-            box-shadow: $shadow-lg, 0 0 32px rgba($color-accent-mint, 0.5);
         }
     }
 }

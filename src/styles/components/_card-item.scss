@@ -35,7 +35,7 @@
     &__image {
         position: relative;
         width: 100%;
-        aspect-ratio: 2 / 3;
+        aspect-ratio: 3 / 4;
         overflow: hidden;
         background: linear-gradient(135deg, rgba($color-accent-medium-gray, 0.2), rgba($color-accent-dark-gray, 0.1));
         display: flex;
@@ -81,10 +81,9 @@
     }
 
     &__body {
-        padding: $space-md;
+        padding: $space-sm $space-md;
         @include flex-column;
-        gap: $space-sm;
-        align-items: flex-start;
+        gap: $space-xs;
     }
 
     &__header {
@@ -103,7 +102,7 @@
     &__condition {
         font-size: $font-size-xs;
         font-weight: $font-weight-medium;
-        color: $color-accent-blue;
+        color: $color-accent-mint;
         white-space: nowrap;
         flex-shrink: 0;
     }
@@ -117,8 +116,8 @@
     &__values {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: $space-sm;
-        padding-top: $space-sm;
+        gap: $space-xs;
+        padding-top: $space-xs;
         border-top: 1px solid $glass-border;
     }
 
@@ -135,17 +134,16 @@
     }
 
     &__value-amount {
-        font-size: $font-size-sm;
+        font-size: $font-size-xs;
         font-weight: $font-weight-semibold;
         color: $color-accent-light-gray;
 
         &--current {
-            color: $color-accent-blue;
+            color: $color-accent-mint;
         }
 
         &--profit {
             color: $color-success;
-            text-shadow: 0 0 12px rgba($color-success, 0.4);
         }
 
         &--loss {

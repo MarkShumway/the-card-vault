@@ -22,7 +22,6 @@ function Header() {
     return (
         <header className="header">
 
-            {/* Brand */}
             <div className="header__brand">
                 <img
                     className="header__logo"
@@ -42,6 +41,11 @@ function Header() {
                     <span className="header__stat-value">{formatCurrency(totalValue)}</span>
                 </div>
                 <div className="header__user">
+                    <button className="header__add-btn"
+                            onClick={() => navigate('/add')}
+                            aria-label="Add new card">
+                        + Add Card
+                    </button>
                     <span className="header__email">{user?.email}</span>
                     <button className="header__logout" onClick={handleLogout}>
                         Sign Out

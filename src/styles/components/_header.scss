@@ -8,10 +8,13 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1280px;
     z-index: 100;
-    overflow: hidden;
 
     // ── Desktop: single row ──────────────────────────────────────────
     @include respond-to(md) {
@@ -118,6 +121,27 @@
         }
     }
 
+    &__add-btn {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        color: $color-accent-light-gray;
+        padding: $space-xs $space-md;
+        background: $color-accent-mint;
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-md;
+        white-space: nowrap;
+        transition: all $transition-fast;
+
+        @include respond-to(md) {
+            font-size: $font-size-sm;
+        }
+
+        &:hover {
+            border-color: $color-accent-mint;
+            color: $color-accent-mint;
+            background: rgba($color-accent-mint, 0.1);
+        }
+    }
     &__email {
         font-size: $font-size-sm;
         color: $color-accent-cool-gray;
