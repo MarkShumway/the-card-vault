@@ -172,6 +172,7 @@ Database types are auto-generated from the Supabase schema using the Supabase CL
 ## Roadmap
 
 - [x] eBay pricing API integration for real-time card values
+- [x] Unit tests with Vitest
 - [ ] Collection analytics dashboard with charts
 - [ ] CSV import/export
 - [ ] Public collection sharing
