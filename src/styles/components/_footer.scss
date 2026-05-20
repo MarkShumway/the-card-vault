@@ -3,19 +3,32 @@
 
 .footer {
     @include glass;
-    @include flex-column;
-    gap: $space-md;
-    padding: $space-md $space-xl;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     border-top: 1px solid $glass-border;
     border-bottom: none;
     border-left: none;
     border-right: none;
     margin-top: auto;
+    padding: 0;
 
-    @include respond-to(lg) {
-        @include flex-center;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
+    &__inner {
+        @include flex-column;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: $space-md $space-xl;
+        gap: $space-md;
+
+        @include respond-to(lg) {
+            @include flex-between;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
     }
 
     &__brand {
@@ -33,7 +46,8 @@
     &__name {
         font-family: $font-family-display;
         font-size: $font-size-base;
-        letter-spacing: $tracking-tight;
+        letter-spacing: 0.06em;
+        color: $color-accent-mint;
     }
 
     &__meta {
