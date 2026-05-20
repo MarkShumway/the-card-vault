@@ -40,8 +40,8 @@
         }
 
         &:hover:not(:disabled) {
-            opacity: 0.85;
             transform: translateY(-1px);
+            opacity: 0.85;
         }
 
         &:disabled {

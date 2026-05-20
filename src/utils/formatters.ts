@@ -28,6 +28,13 @@ export function formatCurrency(value: number): string {
 }
 
 export function formatPercent(value: number): string {
+    const absValue = Math.abs(value)
+
+    // For very large percentages, drop the decimal entirely
+    if (absValue >= 1000) {
+        return `${value >= 0 ? '+' : ''}${Math.round(value).toLocaleString()}%`
+    }
+
     return `${value >= 0 ? '+' : ''}${value.toFixed(1)}%`
 }
 

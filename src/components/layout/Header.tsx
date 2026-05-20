@@ -1,14 +1,14 @@
-import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { useAppDispatch } from '../../store/hooks'
 import { setUser } from '../../features/auth/authSlice'
 import { supabase } from '../../services/supabase'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { cardsApi } from '../../features/cards/cardsApi'
 import { formatCurrency } from '../../utils/formatters'
 
 function Header() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const { user } = useAppSelector((state) => state.auth)
+    const location = useLocation()
     const { data: cards } = cardsApi.endpoints.getCards.useQueryState()
 
     const totalValue = cards?.reduce((sum, card) => sum + card.current_value, 0) ?? 0
@@ -16,8 +16,10 @@ function Header() {
     const handleLogout = async () => {
         await supabase.auth.signOut()
         dispatch(setUser(null))
-        navigate('/login')
+        navigate('/')
     }
+
+    const isActive = (path: string) => location.pathname === path
 
     return (
         <header className="header">
@@ -34,29 +36,52 @@ function Header() {
                 )}
             </div>
 
-            {/* Right side — desktop */}
             <div className="header__right">
                 <div className="header__stats">
                     <span className="header__stat-label">Collection Value</span>
                     <span className="header__stat-value">{formatCurrency(totalValue)}</span>
                 </div>
                 <div className="header__user">
-                    <button className="header__add-btn"
-                            onClick={() => navigate('/add')}
-                            aria-label="Add new card">
+                    <button
+                        className={`header__nav-btn${isActive('/collection') ? ' header__nav-btn--active' : ''}`}
+                        onClick={() => navigate('/collection')} >
+                        Collection
+                    </button>
+                    <button
+                        className={`header__nav-btn${isActive('/dashboard') ? ' header__nav-btn--active' : ''}`}
+                        onClick={() => navigate('/dashboard')} >
+                        Dashboard
+                    </button>
+                    <button
+                        className="header__add-btn"
+                        onClick={() => navigate('/add')}
+                        aria-label="Add new card" >
                         + Add Card
                     </button>
-                    <span className="header__email">{user?.email}</span>
                     <button className="header__logout" onClick={handleLogout}>
                         Sign Out
                     </button>
                 </div>
             </div>
 
-            {/* Mobile second row — collection value */}
+            {/* Mobile second row — collection value + nav */}
             <div className="header__mobile-stats">
-                <span className="header__mobile-stat-label">Collection Value</span>
-                <span className="header__mobile-stat-value">{formatCurrency(totalValue)}</span>
+                <div className="header__mobile-stat-group">
+                    <span className="header__mobile-stat-label">Collection Value</span>
+                    <span className="header__mobile-stat-value">{formatCurrency(totalValue)}</span>
+                </div>
+                <div className="header__mobile-nav">
+                    <button
+                        className={`header__mobile-nav-btn${isActive('/collection') ? ' header__mobile-nav-btn--active' : ''}`}
+                        onClick={() => navigate('/collection')} >
+                        Collection
+                    </button>
+                    <button
+                        className={`header__mobile-nav-btn${isActive('/dashboard') ? ' header__mobile-nav-btn--active' : ''}`}
+                        onClick={() => navigate('/dashboard')} >
+                        Dashboard
+                    </button>
+                </div>
             </div>
 
         </header>

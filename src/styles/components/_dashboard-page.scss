@@ -1,0 +1,208 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.dashboard {
+    @include flex-column;
+    min-height: 100vh;
+
+    &__main {
+        flex: 1;
+        padding: $space-md $space-md $space-2xl $space-md;
+
+        @include respond-to(md) {
+            padding: $space-2xl;
+        }
+    }
+
+    &__heading-row {
+        @include flex-between;
+        flex-wrap: wrap;
+        gap: $space-md;
+        margin-bottom: $space-xl;
+    }
+
+    &__heading {
+        font-family: $font-family-display;
+        font-size: $font-size-2xl;
+        letter-spacing: $tracking-tight;
+        color: $color-accent-light-gray;
+    }
+
+    &__filter {
+        @include flex-center;
+        gap: $space-sm;
+    }
+
+    &__filter-label {
+        font-size: $font-size-sm;
+        color: $color-accent-cool-gray;
+        white-space: nowrap;
+    }
+
+    &__filter-select {
+        @include custom-select;
+
+        option {
+            background-color: $color-accent-dark-gray;
+        }
+    }
+
+    // ── Summary cards ──────────────────────────────────────────────────
+    &__summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $space-md;
+        margin-bottom: $space-xl;
+
+        @include respond-to(md) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &__stat-card {
+        @include glass-card;
+        padding: $space-lg;
+        @include flex-column;
+        gap: $space-xs;
+    }
+
+    &__stat-label {
+        font-size: $font-size-xs;
+        color: $color-accent-cool-gray;
+        text-transform: uppercase;
+        letter-spacing: $tracking-tight;
+    }
+
+    &__stat-value {
+        font-size: $font-size-1xl;
+        font-weight: $font-weight-bold;
+        color: $color-accent-light-gray;
+
+        &--profit {
+            color: $color-success;
+        }
+
+        &--loss {
+            color: $color-error;
+        }
+
+        &--mint {
+            color: $color-accent-mint;
+        }
+    }
+
+    &__stat-sub {
+        font-size: $font-size-xs;
+        color: $color-accent-cool-gray;
+    }
+
+    // ── Charts grid ────────────────────────────────────────────────────
+    &__charts {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $space-xl;
+        margin-bottom: $space-xl;
+
+        @include respond-to(lg) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    &__chart-card {
+        @include glass-card;
+        padding: $space-lg;
+        @include flex-column;
+        gap: $space-lg;
+    }
+
+    &__chart-title {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-accent-mint;
+        text-transform: uppercase;
+        letter-spacing: $tracking-normal;
+        padding-bottom: $space-sm;
+        border-bottom: 1px solid $glass-border;
+    }
+
+    &__chart-container {
+        width: 100%;
+        height: 280px;
+    }
+
+    // ── Top cards ──────────────────────────────────────────────────────
+    &__top-cards {
+        @include glass-card;
+        padding: $space-lg;
+        @include flex-column;
+        gap: $space-md;
+        margin-bottom: $space-xl;
+    }
+
+    &__top-card-item {
+        @include flex-between;
+        gap: $space-md;
+        padding: $space-sm $space-md;
+        background: $glass-bg;
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-md;
+        transition: border-color $transition-fast;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $color-accent-mint;
+        }
+    }
+
+    &__top-card-rank {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        color: $color-accent-amber;
+        width: 24px;
+        flex-shrink: 0;
+    }
+
+    &__top-card-info {
+        @include flex-column;
+        gap: 2px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__top-card-name {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $color-accent-light-gray;
+        @include truncate;
+    }
+
+    &__top-card-meta {
+        font-size: $font-size-xs;
+        color: $color-accent-cool-gray;
+        @include truncate;
+    }
+
+    &__top-card-value {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        color: $color-accent-mint;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    // ── Empty state ────────────────────────────────────────────────────
+    &__empty {
+        @include flex-center;
+        @include flex-column;
+        gap: $space-md;
+        min-height: 400px;
+        color: $color-accent-cool-gray;
+        text-align: center;
+    }
+
+    &__empty-title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+        color: $color-accent-light-gray;
+    }
+}
