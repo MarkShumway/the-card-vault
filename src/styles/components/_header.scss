@@ -16,13 +16,11 @@
     max-width: 1280px;
     z-index: 100;
 
-    // ── Desktop: single row ──────────────────────────────────────────
     @include respond-to(md) {
         @include flex-between;
         padding: $space-md $space-xl;
     }
 
-    // ── Mobile: two rows ─────────────────────────────────────────────
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto;
@@ -34,6 +32,7 @@
         gap: $space-sm;
         grid-column: 1;
         grid-row: 1;
+        min-width: 0;
 
         @include respond-to(md) {
             gap: $space-md;
@@ -41,20 +40,29 @@
     }
 
     &__logo {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         flex-shrink: 0;
+
+        @include respond-to(lg) {
+            width: 32px;
+            height: 32px;
+        }
     }
 
     &__title {
         font-family: $font-family-display;
-        font-size: $font-size-lg;
+        font-size: $font-size-base;
         letter-spacing: $tracking-tight;
         font-weight: $font-weight-bold;
         color: $color-accent-light-gray;
         white-space: nowrap;
 
         @include respond-to(md) {
+            font-size: $font-size-lg;
+        }
+
+        @include respond-to(lg) {
             font-size: $font-size-1xl;
         }
     }
@@ -67,17 +75,22 @@
         padding: 2px $space-sm;
         border-radius: $border-radius-full;
         white-space: nowrap;
+        display: none;
+
+        @include respond-to(md) {
+            display: inline-flex;
+        }
     }
 
     &__right {
         @include flex-center;
         justify-content: flex-end;
-        gap: $space-md;
+        gap: $space-sm;
         grid-column: 2;
         grid-row: 1;
 
-        @include respond-to(md) {
-            gap: $space-xl;
+        @include respond-to(lg) {
+            gap: $space-md;
         }
     }
 
@@ -85,11 +98,9 @@
         @include flex-column;
         align-items: flex-end;
         gap: 2px;
-
-        // Hide on very small screens — shown in second row instead
         display: none;
 
-        @include respond-to(sm) {
+        @include respond-to(lg) {
             display: flex;
         }
     }
@@ -102,22 +113,59 @@
     }
 
     &__stat-value {
-        font-size: $font-size-base;
+        font-size: $font-size-sm;
         font-weight: $font-weight-bold;
         color: $color-accent-mint;
         text-shadow: 0 0 20px rgba($color-accent-mint, 0.4);
 
-        @include respond-to(md) {
-            font-size: $font-size-lg;
+        @include respond-to(lg) {
+            font-size: $font-size-base;
         }
     }
 
     &__user {
         @include flex-center;
-        gap: $space-sm;
+        gap: $space-xs;
 
-        @include respond-to(md) {
-            gap: $space-md;
+        @include respond-to(lg) {
+            gap: $space-sm;
+        }
+    }
+
+    // ── Nav buttons — hidden on mobile, visible at lg ──────────────────
+    &__nav-btn {
+        display: none;
+
+        @include respond-to(lg) {
+            display: inline-flex;
+            align-items: center;
+            font-size: $font-size-xs;
+            font-weight: $font-weight-medium;
+            color: $color-accent-cool-gray;
+            padding: $space-xs $space-sm;
+            background: transparent;
+            border: 1px solid $glass-border;
+            border-radius: $border-radius-md;
+            white-space: nowrap;
+            transition: all $transition-fast;
+            cursor: pointer;
+        }
+
+        @include respond-to(xl) {
+            font-size: $font-size-sm;
+            padding: $space-xs $space-md;
+        }
+
+        &:hover {
+            color: $color-accent-mint;
+            border-color: $color-accent-mint;
+            background: rgba($color-accent-mint, 0.1);
+        }
+
+        &--active {
+            color: $color-accent-mint;
+            border-color: $color-accent-mint;
+            background: rgba($color-accent-mint, 0.1);
         }
     }
 
@@ -125,30 +173,22 @@
         font-size: $font-size-xs;
         font-weight: $font-weight-semibold;
         color: $color-accent-light-gray;
-        padding: $space-xs $space-md;
+        padding: $space-xs $space-sm;
         background: $color-accent-mint;
-        border: 1px solid $glass-border;
+        border: 1px solid $color-accent-mint;
         border-radius: $border-radius-md;
         white-space: nowrap;
         transition: all $transition-fast;
+        cursor: pointer;
 
-        @include respond-to(md) {
+        @include respond-to(lg) {
             font-size: $font-size-sm;
+            padding: $space-xs $space-md;
         }
 
         &:hover {
-            border-color: $color-accent-mint;
-            color: $color-accent-mint;
-            background: rgba($color-accent-mint, 0.1);
-        }
-    }
-    &__email {
-        font-size: $font-size-sm;
-        color: $color-accent-cool-gray;
-        display: none;
-
-        @include respond-to(lg) {
-            display: block;
+            opacity: 0.85;
+            transform: translateY(-1px);
         }
     }
 
@@ -162,8 +202,9 @@
         background: $glass-bg;
         white-space: nowrap;
         transition: all $transition-fast;
+        cursor: pointer;
 
-        @include respond-to(md) {
+        @include respond-to(lg) {
             font-size: $font-size-sm;
             padding: $space-xs $space-md;
         }
@@ -175,16 +216,67 @@
         }
     }
 
-    // ── Mobile second row: show collection value ──────────────────────
+    // ── Mobile second row ─────────────────────────────────────────────
     &__mobile-stats {
         grid-column: 1 / -1;
         grid-row: 2;
         @include flex-between;
+        align-items: center;
+        gap: $space-sm;
         padding-top: $space-xs;
         border-top: 1px solid $glass-border;
 
-        @include respond-to(sm) {
+        @include respond-to(lg) {
             display: none;
+        }
+    }
+
+    &__mobile-stat-group {
+        @include flex-column;
+        gap: 0;
+    }
+
+    &__mobile-stat-label {
+        font-size: $font-size-xs;
+        color: $color-accent-cool-gray;
+        text-transform: uppercase;
+        letter-spacing: $tracking-tight;
+        line-height: 1.2;
+    }
+
+    &__mobile-stat-value {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        color: $color-success;
+        line-height: 1.2;
+    }
+
+    &__mobile-nav {
+        display: flex;
+        gap: $space-xs;
+    }
+
+    &__mobile-nav-btn {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+        color: $color-accent-cool-gray;
+        padding: 2px $space-sm;
+        background: transparent;
+        border: 1px solid $glass-border;
+        border-radius: $border-radius-full;
+        white-space: nowrap;
+        transition: all $transition-fast;
+        cursor: pointer;
+
+        &:hover {
+            color: $color-accent-mint;
+            border-color: $color-accent-mint;
+        }
+
+        &--active {
+            color: $color-accent-mint;
+            border-color: $color-accent-mint;
+            background: rgba($color-accent-mint, 0.1);
         }
     }
 

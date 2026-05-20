@@ -6,6 +6,7 @@ import WelcomePage from '../pages/WelcomePage'
 import CollectionPage from '../pages/CollectionPage'
 import AddCardPage from '../pages/AddCardPage'
 import CardDetailPage from '../pages/CardDetailPage'
+import DashboardPage from '../pages/DashboardPage'
 import SessionWarningModal from '../components/common/SessionWarningModal'
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
@@ -45,6 +46,14 @@ function AppRoutes() {
                     element={
                         <ProtectedRoute>
                             <CardDetailPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <DashboardPage />
                         </ProtectedRoute>
                     }
                 />
