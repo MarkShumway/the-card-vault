@@ -3,28 +3,34 @@
 
 .header {
     @include glass;
-    padding: $space-sm $space-md;
+    padding: 0;
     border-bottom: 1px solid $glass-border;
     border-top: none;
     border-left: none;
     border-right: none;
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
     width: 100%;
-    max-width: 1280px;
     z-index: 100;
 
-    @include respond-to(md) {
-        @include flex-between;
-        padding: $space-md $space-xl;
-    }
+    &__inner {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: $space-sm $space-md;
 
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: $space-xs;
+        @include respond-to(md) {
+            @include flex-between;
+            padding: $space-md $space-xl;
+        }
+
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: $space-xs;
+    }
 
     &__brand {
         @include flex-center;
