@@ -3,25 +3,19 @@
 
 .footer {
     @include glass;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    width: 100%;
     border-top: 1px solid $glass-border;
     border-bottom: none;
     border-left: none;
     border-right: none;
-    margin-top: auto;
     padding: 0;
 
     &__inner {
-        @include flex-column;
         width: 100%;
         max-width: 1280px;
         margin: 0 auto;
         padding: $space-md $space-xl;
+        @include flex-column;
         gap: $space-md;
 
         @include respond-to(lg) {

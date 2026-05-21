@@ -9,8 +9,6 @@ import { useGetCardByIdQuery,
          useUploadCardImageMutation,
        } from '../features/cards/cardsApi'
 import { useAppSelector } from '../store/hooks'
-import Header from '../components/layout/Header'
-import Footer from '../components/layout/Footer'
 import EbayPricing from '../features/cards/components/EbayPricing'
 import type { CardCategory, CardCondition } from '../types'
 import {formatCurrency, formatPercent, calcProfit, formatDate} from '../utils/formatters'
@@ -45,7 +43,6 @@ function CardDetailPage() {
     if (isLoading) {
         return (
             <div className="card-detail-page">
-                <Header />
                 <div className="card-detail-page__loading">Loading card...</div>
             </div>
         )
@@ -54,7 +51,6 @@ function CardDetailPage() {
     if (isError || !card) {
         return (
             <div className="card-detail-page">
-                <Header />
                 <div className="card-detail-page__error">Card not found.</div>
             </div>
         )
@@ -145,7 +141,6 @@ function CardDetailPage() {
     if (!isEditing) {
         return (
             <div className="card-detail-page">
-                <Header />
                 <main className="card-detail-page__main">
 
                     <button
@@ -281,7 +276,6 @@ function CardDetailPage() {
                         </div>
                     </div>
                 </main>
-                <Footer />
             </div>
         )
     }
@@ -289,7 +283,6 @@ function CardDetailPage() {
     // ─── Edit mode ───────────────────────────────────────────────────────────────
     return (
         <div className="card-detail-page">
-            <Header />
             <main className="card-detail-page__main">
                 <button
                     className="card-detail-page__back"
@@ -508,8 +501,6 @@ function CardDetailPage() {
                     </div>
                 </form>
             </main>
-
-            <Footer />
         </div>
     )
 }

@@ -23,11 +23,17 @@
 @use 'components/dashboard-page';
 
 // ─── Global layout wrapper ────────────────────────────────────────────────────
+.app-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .app-container {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    min-height: 100vh;
+    flex: 1;
     display: flex;
     flex-direction: column;
     position: relative;
