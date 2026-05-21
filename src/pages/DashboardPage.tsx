@@ -4,8 +4,6 @@ import { PieChart, Pie, Tooltip, ResponsiveContainer,
          BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts'
 import { useGetCardsQuery } from '../features/cards/cardsApi'
 import { formatCurrency, formatPercent, calcProfit } from '../utils/formatters'
-import Header from '../components/layout/Header'
-import Footer from '../components/layout/Footer'
 import type { CardCategory } from '../types'
 
 // ─── Chart colors ─────────────────────────────────────────────────────────────
@@ -151,13 +149,11 @@ function DashboardPage() {
     if (isLoading) {
         return (
             <div className="dashboard">
-                <Header />
                 <main className="dashboard__main">
                     <div className="dashboard__empty">
                         <p>Loading dashboard...</p>
                     </div>
                 </main>
-                <Footer />
             </div>
         )
     }
@@ -165,21 +161,18 @@ function DashboardPage() {
     if (!cards?.length) {
         return (
             <div className="dashboard">
-                <Header />
                 <main className="dashboard__main">
                     <div className="dashboard__empty">
                         <p className="dashboard__empty-title">No cards yet</p>
                         <p>Add some cards to your collection to see your dashboard.</p>
                     </div>
                 </main>
-                <Footer />
             </div>
         )
     }
 
     return (
         <div className="dashboard">
-            <Header />
             <main className="dashboard__main">
                 {/* ── Heading + filter ── */}
                 <div className="dashboard__heading-row">
@@ -348,7 +341,6 @@ function DashboardPage() {
                     </>
                 )}
             </main>
-            <Footer />
         </div>
     )
 }

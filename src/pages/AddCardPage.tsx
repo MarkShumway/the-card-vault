@@ -5,8 +5,6 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useAddCardMutation, useUploadCardImageMutation} from '../features/cards/cardsApi'
 import {useAppSelector} from '../store/hooks'
-import Header from '../components/layout/Header'
-import Footer from '../components/layout/Footer'
 import type {CardCategory, CardCondition} from '../types'
 import {type CardFormValues, cardSchema} from '../utils/cardSchema'
 
@@ -82,7 +80,6 @@ function AddCardPage() {
 
     return (
         <div className="add-card-page">
-            <Header />
 
             <main className="add-card-page__main">
                 <h2 className="add-card-page__heading">Add New Card</h2>
@@ -344,8 +341,6 @@ function AddCardPage() {
 
                 </form>
             </main>
-
-            <Footer />
         </div>
     )
 }

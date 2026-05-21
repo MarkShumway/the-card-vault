@@ -2,8 +2,6 @@ import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useGetCardsQuery } from '../features/cards/cardsApi'
 import { useAppSelector } from '../store/hooks'
-import Header from '../components/layout/Header'
-import Footer from '../components/layout/Footer'
 import CollectionFilters from '../features/collection/components/CollectionFilters'
 import CardItem from '../features/cards/components/CardItem'
 import Pagination from '../components/common/Pagination'
@@ -64,7 +62,6 @@ function CollectionPage() {
 
     return (
         <div className="collection-page">
-            <Header />
             <CollectionFilters />
 
             <main className="collection-page__main">
@@ -113,9 +110,6 @@ function CollectionPage() {
                     <Pagination totalItems={filteredCards.length} />
                 )}
             </main>
-
-            <Footer />
-
         </div>
     )
 }
